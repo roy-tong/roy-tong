@@ -39,7 +39,7 @@
   "event_id": "018f4f88-6b60-7ed0-9d6e-a8cb99431a8d",
   "occurred_at": "2026-08-12T08:00:00Z",
   "project": "iread",
-  "version": "0.2.0-beta.8",
+  "version": "0.2.0-beta.9",
   "surface": "cli",
   "operation": "report.generate",
   "outcome": "success",
