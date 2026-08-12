@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/roy-tong/roy-tong/blob/main/metrics/agent-event.schema.json",
+  "title": "Roy Agent Tool Event",
+  "description": "Privacy-minimized event contract for local or explicitly opted-in Agent tool measurement.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "event_id",
+    "occurred_at",
+    "project",
+    "version",
+    "surface",
+    "operation",
+    "outcome",
+    "telemetry_mode"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "event_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "project": {
+      "type": "string",
+      "enum": [
+        "iread",
+        "sure-user-demand-research",
+        "bilibili-transcript-pipeline",
+        "research-knowledge-base"
+      ]
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "surface": {
+      "type": "string",
+      "enum": ["cli", "mcp", "skill"]
+    },
+    "operation": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_.-]{0,63}$"
+    },
+    "outcome": {
+      "type": "string",
+      "enum": ["success", "user_error", "dependency_error", "internal_error", "cancelled"]
+    },
+    "duration_bucket": {
+      "type": "string",
+      "enum": ["under-1s", "1s-10s", "10s-60s", "1m-5m", "over-5m", "unknown"]
+    },
+    "agent_host": {
+      "type": "string",
+      "enum": ["codex", "claude-code", "cursor", "github-copilot", "gemini-cli", "other", "unknown"]
+    },
+    "telemetry_mode": {
+      "type": "string",
+      "enum": ["local", "anonymous-opt-in"]
+    }
+  }
+}

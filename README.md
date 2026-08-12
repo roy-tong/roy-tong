@@ -45,7 +45,7 @@ npx skills add roy-tong/iRead --skill iread -g -a codex -y
 
 这些项目不要求 Agent 暗中上传用户输入、研究领域、视频链接、逐字稿或本地路径。详见各仓库的统计口径和隐私边界。
 
-[查看统计口径、改造前基线与复测脚本](metrics/README.md)
+[查看统计口径与改造前基线](metrics/README.md) · [查看 Agent 调用计数方案](metrics/CALL-MEASUREMENT.md)
 
 ## 我关注的问题
 

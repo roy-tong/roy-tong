@@ -2,6 +2,12 @@ name: Agent discovery snapshot
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '17 1 * * 1'
+
+concurrency:
+  group: agent-discovery-snapshot
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -11,9 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - name: Generate observable discovery report
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.TRAFFIC_TOKEN || github.token }}
         run: |
           report="metrics/$(date -u +%F).md"
           scripts/agent-discovery-report.sh > "$report"
