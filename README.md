@@ -1,48 +1,54 @@
-# Roy Tong（仝夏瑞）
+# Roy.Tong
 
-**产品经理、连续创业者，长期研究 AI、具身智能与新一代智能硬件。**
+**I build tools and components that help agents research, transform evidence, and reuse knowledge.**
 
-过去近十年，我在平安银行、百度、科大讯飞、字节跳动和 DJI 做过企业级 AI、消费级软件与智能硬件产品，也持续参与从 0 到 1 的创业探索。
+我的项目默认按 Agent 产品来建设：先让 Agent 能发现，再让它能安装、调用、检查结果；同时明确权限、失败状态和数据边界。
 
-我关心的不是如何把 AI 加进更多功能，而是如何让模型、软件、硬件、数据和真实工作流组成可交付、可复用的产品系统。
+[个人网站](https://roy-tong.github.io) · [Agent 可读知识索引](https://roy-tong.github.io/llms.txt) · [研究文章](https://roy-tong.github.io/archive/)
 
-[个人网站](https://roy-tong.github.io) · [研究文章](https://roy-tong.github.io/archive/) · [GitHub](https://github.com/roy-tong)
+## Agent 工具栈
 
-## 正在做的项目
+| Agent 需要完成的任务 | 项目 | 接口 | 输入 → 输出 |
+| --- | --- | --- | --- |
+| 持续监测一个研究领域 | [iRead](https://github.com/roy-tong/iRead) | Agent Skill + 本地 CLI | 研究领域 → 待审核信源、日报、周报、月报 |
+| 从用户证据判断需求 | [SURE](https://github.com/roy-tong/sure-user-demand-research) | 标准 Agent Skill | 决策问题与证据 → 研究契约、证据账本、机会卡 |
+| 把 B 站视频变成研究文本 | [Bilibili Transcript Pipeline](https://github.com/roy-tong/bilibili-transcript-pipeline) | Agent Skill + CLI | URL / BV 号 → 时间戳 Markdown、SRT、JSON |
+| 检索我的公开研究 | [Roy's Research Knowledge Base](https://github.com/roy-tong/roy-tong.github.io) | Agent Skill + `llms.txt` | 研究问题 → 原文链接、综合判断、证据缺口 |
 
-### [iRead](https://github.com/roy-tong/iRead)
+## 一条命令安装
 
-开源、本地优先的 AI 研究助手。用户只需说出一个或多个研究领域，iRead 会推荐待审核的高质量信源，采集 RSS 与已授权公众号，并生成日报、周报和月报。
-
-- 从“用户自己找 Feed”前移到“根据领域发现并评估信源”。
-- 区分一手证据、独立核验、专业分析、专家经验和发现线索。
-- 默认把配置、凭据、文章和报告保留在本机。
-- 已提供 Codex 与 Claude Code 的一行安装流程。
-
-**快速开始：**
+GitHub CLI 可以把标准 Skill 安装到 Codex、Claude Code、Cursor、GitHub Copilot、Gemini CLI 等 Agent：
 
 ```bash
-set -o pipefail; curl -fsSL https://cdn.jsdelivr.net/gh/roy-tong/iRead@main/install | bash -s -- codex
+gh skill install roy-tong/iRead iread --agent codex --scope user
+gh skill install roy-tong/sure-user-demand-research scene-user-demand-research --agent codex --scope user
+gh skill install roy-tong/bilibili-transcript-pipeline bilibili-transcript --agent codex --scope user
+gh skill install roy-tong/roy-tong.github.io research-knowledge-base --agent codex --scope user
 ```
 
-### [Roy's Notes](https://roy-tong.github.io)
+如果希望使用公开匿名安装数的 skills.sh 生态：
 
-记录我对 AI 产品、Agent、具身智能、AI 硬件与创业的长期研究。相比追逐每日热点，我更关心变化为什么发生、如何形成产品，以及哪些判断最终经受住了事实检验。
+```bash
+npx skills add roy-tong/iRead --skill iread -g -a codex -y
+```
 
-从这里开始：
+把仓库名和 Skill 名替换为上表中的项目即可。
 
-- [从 AI 应用到真实世界：我的一次转向](https://roy-tong.github.io/notes/from-ai-software-to-physical-world/)
-- [具身智能入门：产业、公司、产品、技术与职业地图](https://roy-tong.github.io/notes/embodied-intelligence-beginners-guide/)
+## 如何判断项目是否真的被 Agent 使用
 
-## 研究与产品方法
+我把指标分成四层，不用 Star 冒充调用量：
 
-- **先建立地图，再判断局部。** 从产业结构、用户任务和证据层级进入具体公司与技术。
-- **区分事实、推断与立场。** 保留不确定性，也保留判断被新事实修正的路径。
-- **从 Demo 追问到交付。** 技术最终要进入真实场景，并接受成本、可靠性和持续使用的检验。
-- **把研究沉淀为工具。** iRead 是我把长期信息工作流产品化、开放化的一次实践。
+1. **可发现**：目标关键词能否进入 `gh skill search` 前 15 名，项目是否被 skills.sh 收录。
+2. **被安装**：skills.sh 的公开匿名安装数；GitHub Release 资产下载只计算直接下载安装包。
+3. **被调用**：只有 CLI 或宿主 Agent 明确提供回执时统计。纯 Skill 的触发次数目前不可准确观测。
+4. **产生结果**：复用案例、Issue、外部贡献和留存任务。
 
-## 当前关注
+这些项目不要求 Agent 暗中上传用户输入、研究领域、视频链接、逐字稿或本地路径。详见各仓库的统计口径和隐私边界。
 
-`AI Agents` · `Embodied AI` · `AI Hardware` · `Product Strategy` · `0 → 1` · `Open-source Research Tools`
+[查看统计口径、改造前基线与复测脚本](metrics/README.md)
 
-如果你也在构建 AI 产品、研究具身智能，或想为 iRead 贡献一个领域的高质量信源，可以通过 [iRead Issues](https://github.com/roy-tong/iRead/issues) 发起讨论。
+## 我关注的问题
+
+`Agent Tools` · `Agent Skills` · `Research Infrastructure` · `Evidence Systems` · `Knowledge Retrieval` · `Embodied AI` · `AI Hardware`
+
+如果你希望 Agent 获得一种目前缺失的研究能力，可以在对应仓库发 Issue，描述任务、输入、预期输出和验收方式。
