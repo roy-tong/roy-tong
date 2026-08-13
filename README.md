@@ -10,6 +10,7 @@
 
 ## 最近的文章
 
+- [AI Native 之后，产品的基本单位变了](https://roy-tong.github.io/notes/ai-native-basic-unit/) — 为什么页面、文件、图层和时间线会逐步退回到视图与控制面。
 - [Agent 向左，具身向右：AI 在信息空间与物理世界的分岔](https://roy-tong.github.io/notes/agent-left-embodied-right/) — 为什么共享模型能力的两条 AI 路线，会在失败成本、评测、安全、部署与商业化上逐步分岔。
 - [AI 产业开始为“把事做成”买单](https://roy-tong.github.io/notes/waic-from-models-to-systems/) — 从模型能力走向工具、工作流、交付与组织采用。
 - [具身智能入门：产业、公司、产品、技术与职业地图](https://roy-tong.github.io/notes/embodied-intelligence-beginners-guide/) — 面向行业新手与转型者的结构化入门地图。
