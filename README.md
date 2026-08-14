@@ -10,13 +10,14 @@
 
 ## 最近的文章
 
+- [空间计算需要自己的“触控时刻”](https://roy-tong.github.io/notes/spatial-computing-touch-moment/) — 空间内容成为计算平台之前，需要稳定、可组合、可撤销的通用交互原语。
+- [空降管理者如何从职位合法性走向组织合法性](https://roy-tong.github.io/notes/appointed-manager-organizational-legitimacy/) — 头衔提供决策权，共同解决问题的记录才会形成组织合法性。
+- [家庭机器人为什么技术上更难，经济上可能更丰富](https://roy-tong.github.io/notes/home-robots-harder-richer/) — 家庭的变化环境、多人关系与责任结构，怎样同时抬高技术难度并扩展价值空间。
+- [Geek、Professional、B、C：不同市场负责消灭不同不确定性](https://roy-tong.github.io/notes/market-roles-remove-uncertainty/) — 不把市场当成熟度阶梯，而把它们当成消灭不同未知的证据环境。
 - [AI Wearable 的竞争，不是眼镜对耳机](https://roy-tong.github.io/notes/ai-wearable-modalities-body-comfort/) — 从输入输出模态、交互控制、身体位置和佩戴舒适性重新理解竞争。
 - [竞品分析为什么不该从参数表开始](https://roy-tong.github.io/notes/competitive-analysis-software-hardware/) — 软件比较工作流、迁移与持续迭代，硬件还要进入系统耦合、量产、可靠性和售后。
 - [AI Native 之后，产品的基本单位变了](https://roy-tong.github.io/notes/ai-native-basic-unit/) — 为什么页面、文件、图层和时间线会逐步退回到视图与控制面。
 - [Agent 向左，具身向右：AI 在信息空间与物理世界的分岔](https://roy-tong.github.io/notes/agent-left-embodied-right/) — 为什么共享模型能力的两条 AI 路线，会在失败成本、评测、安全、部署与商业化上逐步分岔。
-- [AI 产业开始为“把事做成”买单](https://roy-tong.github.io/notes/waic-from-models-to-systems/) — 从模型能力走向工具、工作流、交付与组织采用。
-- [具身智能入门：产业、公司、产品、技术与职业地图](https://roy-tong.github.io/notes/embodied-intelligence-beginners-guide/) — 面向行业新手与转型者的结构化入门地图。
-- [让大规模用户研究更接近真实决策](https://roy-tong.github.io/notes/scene-user-demand-evidence-research/) — 从用户声音走向可审计、可反驳的需求证据。
 
 ## 开源项目
 
