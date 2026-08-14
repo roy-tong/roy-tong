@@ -19,6 +19,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
+      - name: Validate Agent catalog and router
+        run: python3 scripts/validate-agent-catalog.py
       - name: Generate observable discovery report
         env:
           GH_TOKEN: ${{ secrets.TRAFFIC_TOKEN || github.token }}

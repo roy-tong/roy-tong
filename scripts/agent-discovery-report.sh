@@ -17,87 +17,130 @@ if [[ -z "$GH_BIN" ]]; then
 fi
 
 repos=(
+  "roy-tong"
   "iRead"
-  "sure-user-demand-research"
+  "user-demand-research"
   "bilibili-transcript-pipeline"
   "roy-tong.github.io"
 )
 
 skill_pages=(
+  "roy-tong/find-research-tool"
   "iRead/iread"
-  "sure-user-demand-research/scene-user-demand-research"
+  "user-demand-research/user-demand-research"
   "bilibili-transcript-pipeline/bilibili-transcript"
   "roy-tong.github.io/research-knowledge-base"
 )
 
 queries=(
   "research monitoring"
-  "user demand"
+  "source discovery"
+  "user demand research"
+  "voice of customer"
   "bilibili transcript"
+  "video to text"
   "AI product research"
+  "embodied AI research"
 )
 
 target_repos=(
   "$OWNER/iRead"
-  "$OWNER/sure-user-demand-research"
+  "$OWNER/iRead"
+  "$OWNER/user-demand-research"
+  "$OWNER/user-demand-research"
   "$OWNER/bilibili-transcript-pipeline"
+  "$OWNER/bilibili-transcript-pipeline"
+  "$OWNER/roy-tong.github.io"
   "$OWNER/roy-tong.github.io"
 )
 
 target_skill_ids=(
   "$OWNER/iread/iread"
-  "$OWNER/sure-user-demand-research/scene-user-demand-research"
+  "$OWNER/iread/iread"
+  "$OWNER/user-demand-research/user-demand-research"
+  "$OWNER/user-demand-research/user-demand-research"
+  "$OWNER/bilibili-transcript-pipeline/bilibili-transcript"
   "$OWNER/bilibili-transcript-pipeline/bilibili-transcript"
   "$OWNER/roy-tong.github.io/research-knowledge-base"
+  "$OWNER/roy-tong.github.io/research-knowledge-base"
 )
+
+target_skill_names=(
+  "iread"
+  "iread"
+  "user-demand-research"
+  "user-demand-research"
+  "bilibili-transcript"
+  "bilibili-transcript"
+  "research-knowledge-base"
+  "research-knowledge-base"
+)
+
+router_repo="$OWNER/roy-tong"
+router_skill="find-research-tool"
+router_skill_id="$OWNER/roy-tong/$router_skill"
 
 tmp_dir="$(mktemp -d)"
 trap 'rm -rf "$tmp_dir"' EXIT
 
 echo "# Agent discovery report — ${REPORT_DATE}"
 echo
-echo "This report separates observable signals from estimates. GitHub Skill search exposure is measured directly. GitHub traffic covers only the latest 14 days. skills.sh counts installations made through its CLI. Agent-side skill invocations are not observable unless the host or tool explicitly reports them."
+echo "This report separates observable signals from estimates. GitHub Skill search exposure is measured directly for both the target Skill and the portfolio router fallback. GitHub traffic covers only the latest 14 days. skills.sh counts installations made through its CLI. Agent-side skill invocations are not observable unless the host or tool explicitly reports them."
 echo
 echo "## GitHub Skill search"
 echo
-echo "| Query | Visible in top 15 | Rank | Skill | Repository |"
-echo "| --- | --- | ---: | --- | --- |"
+echo "| Query | Direct target | Rank | Router fallback | Rank |"
+echo "| --- | --- | ---: | --- | ---: |"
 
 for index in "${!queries[@]}"; do
   query="${queries[$index]}"
   target_repo="${target_repos[$index]}"
+  target_skill="${target_skill_names[$index]}"
   search_file="$tmp_dir/search-$(printf '%s' "$query" | tr ' /' '--').json"
   search_status="ok"
   if ! "$GH_BIN" skill search "$query" --limit 15 --json repo,skillName >"$search_file" 2>"$search_file.err"; then
     search_status="unavailable"
     printf '[]\n' >"$search_file"
   fi
-  match="$(jq -r --arg repo "$target_repo" '[to_entries[] | select(.value.repo == $repo)][0] | if . == null then "" else "\(.key + 1)\t\(.value.skillName)\t\(.value.repo)" end' "$search_file")"
-  if [[ "$search_status" == "unavailable" ]]; then
-    printf '| %s | unavailable | — | — | `%s` |\n' "$query" "$target_repo"
-  elif [[ -n "$match" ]]; then
-    rank="${match%%$'\t'*}"
-    rest="${match#*$'\t'}"
-    skill="${rest%%$'\t'*}"
-    repo="${rest#*$'\t'}"
-    printf '| %s | yes | %s | `%s` | `%s` |\n' "$query" "$rank" "$skill" "$repo"
-  else
-    printf '| %s | no | — | — | — |\n' "$query"
+  if ! jq -e 'type == "array"' "$search_file" >/dev/null 2>&1; then
+    search_status="unavailable"
+    printf '[]\n' >"$search_file"
   fi
+  target_match="$(jq -r --arg repo "$target_repo" --arg skill "$target_skill" '[to_entries[] | select(.value.repo == $repo and .value.skillName == $skill)][0] | if . == null then "" else "\(.key + 1)" end' "$search_file")"
+  router_match="$(jq -r --arg repo "$router_repo" --arg skill "$router_skill" '[to_entries[] | select(.value.repo == $repo and .value.skillName == $skill)][0] | if . == null then "" else "\(.key + 1)" end' "$search_file")"
+  target_cell="no (\`$target_repo/$target_skill\`)"
+  router_cell="no (\`$router_repo/$router_skill\`)"
+  target_rank="—"
+  router_rank="—"
+  if [[ "$search_status" == "unavailable" ]]; then
+    target_cell="unavailable (\`$target_repo/$target_skill\`)"
+    router_cell="unavailable (\`$router_repo/$router_skill\`)"
+  else
+    if [[ -n "$target_match" ]]; then
+      target_cell="yes (\`$target_repo/$target_skill\`)"
+      target_rank="$target_match"
+    fi
+    if [[ -n "$router_match" ]]; then
+      router_cell="yes (\`$router_repo/$router_skill\`)"
+      router_rank="$router_match"
+    fi
+  fi
+  printf '| %s | %s | %s | %s | %s |\n' \
+    "$query" "$target_cell" "$target_rank" "$router_cell" "$router_rank"
 done
 
 echo
 echo "## skills.sh search"
 echo
-echo "| Query | Visible in top 20 | Rank | Skill |"
-echo "| --- | --- | ---: | --- |"
+echo "| Query | Direct target | Rank | Router fallback | Rank |"
+echo "| --- | --- | ---: | --- | ---: |"
 
 for index in "${!queries[@]}"; do
   query="${queries[$index]}"
   target_id="${target_skill_ids[$index]}"
   search_file="$tmp_dir/skills-search-$(printf '%s' "$query" | tr ' /' '--').json"
   search_status="ok"
-  if ! curl -sS --get 'https://skills.sh/api/search' \
+  if ! curl -sS --connect-timeout 5 --max-time 15 --get 'https://skills.sh/api/search' \
     --data-urlencode "q=$query" \
     --data-urlencode 'limit=20' \
     -o "$search_file"; then
@@ -109,16 +152,28 @@ for index in "${!queries[@]}"; do
     printf '{"skills":[]}\n' >"$search_file"
   fi
   normalized_target_id="$(printf '%s' "$target_id" | tr '[:upper:]' '[:lower:]')"
-  match="$(jq -r --arg id "$normalized_target_id" '[.skills | to_entries[] | select((.value.id | ascii_downcase) == $id)][0] | if . == null then "" else "\(.key + 1)\t\(.value.name)" end' "$search_file")"
+  normalized_router_id="$(printf '%s' "$router_skill_id" | tr '[:upper:]' '[:lower:]')"
+  target_match="$(jq -r --arg id "$normalized_target_id" '[.skills | to_entries[] | select((.value.id | ascii_downcase) == $id)][0] | if . == null then "" else "\(.key + 1)" end' "$search_file")"
+  router_match="$(jq -r --arg id "$normalized_router_id" '[.skills | to_entries[] | select((.value.id | ascii_downcase) == $id)][0] | if . == null then "" else "\(.key + 1)" end' "$search_file")"
+  target_cell="no (\`$target_id\`)"
+  router_cell="no (\`$router_skill_id\`)"
+  target_rank="—"
+  router_rank="—"
   if [[ "$search_status" == "unavailable" ]]; then
-    printf '| %s | unavailable | — | `%s` |\n' "$query" "$target_id"
-  elif [[ -n "$match" ]]; then
-    rank="${match%%$'\t'*}"
-    skill="${match#*$'\t'}"
-    printf '| %s | yes | %s | `%s` |\n' "$query" "$rank" "$skill"
+    target_cell="unavailable (\`$target_id\`)"
+    router_cell="unavailable (\`$router_skill_id\`)"
   else
-    printf '| %s | no | — | `%s` |\n' "$query" "$target_id"
+    if [[ -n "$target_match" ]]; then
+      target_cell="yes (\`$target_id\`)"
+      target_rank="$target_match"
+    fi
+    if [[ -n "$router_match" ]]; then
+      router_cell="yes (\`$router_skill_id\`)"
+      router_rank="$router_match"
+    fi
   fi
+  printf '| %s | %s | %s | %s | %s |\n' \
+    "$query" "$target_cell" "$target_rank" "$router_cell" "$router_rank"
 done
 
 echo
@@ -184,11 +239,11 @@ for item in "${skill_pages[@]}"; do
   skill="${item#*/}"
   page_url="https://skills.sh/$OWNER/$repo/$skill"
   page_file="$tmp_dir/skills-$(printf '%s' "$repo-$skill" | tr '/' '-').html"
-  status="$(curl -L -sS -o "$page_file" -w '%{http_code}' "$page_url" || true)"
+  status="$(curl -L -sS --connect-timeout 5 --max-time 15 -o "$page_file" -w '%{http_code}' "$page_url" || true)"
   if [[ "$status" == "200" ]] && rg -q '<span>Installs</span>' "$page_file"; then
     search_file="$tmp_dir/skills-exact-$(printf '%s' "$repo-$skill" | tr '/' '-').json"
     total="—"
-    if curl -sS --get 'https://skills.sh/api/search' \
+    if curl -sS --connect-timeout 5 --max-time 15 --get 'https://skills.sh/api/search' \
       --data-urlencode "q=$skill" \
       --data-urlencode 'limit=100' \
       -o "$search_file"; then

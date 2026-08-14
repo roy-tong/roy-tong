@@ -1,0 +1,34 @@
+name: Agent interface validation
+
+on:
+  push:
+    paths:
+      - README.md
+      - AGENTS.md
+      - agent-tools.json
+      - schemas/agent-tools.schema.json
+      - skills/find-research-tool/**
+      - scripts/validate-agent-catalog.py
+      - .github/workflows/agent-interface-validation.yml
+  pull_request:
+    paths:
+      - README.md
+      - AGENTS.md
+      - agent-tools.json
+      - schemas/agent-tools.schema.json
+      - skills/find-research-tool/**
+      - scripts/validate-agent-catalog.py
+      - .github/workflows/agent-interface-validation.yml
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate Agent catalog and router
+        run: python3 scripts/validate-agent-catalog.py
+      - name: Check discovery report script syntax
+        run: bash -n scripts/agent-discovery-report.sh

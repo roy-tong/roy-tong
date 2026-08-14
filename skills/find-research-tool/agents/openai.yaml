@@ -1,0 +1,4 @@
+interface:
+  display_name: "Find a Research Tool"
+  short_description: "Route research tasks to the right open-source tool"
+  default_prompt: "Use $find-research-tool to choose the right research tool for this task and give me the safest first successful action."

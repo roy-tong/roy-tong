@@ -6,7 +6,7 @@
 
 长期关注 AI、具身智能与智能硬件，研究新技术如何从概念走向真实需求、产品与商业。
 
-[个人主页](https://roy-tong.github.io/) · [全部文章](https://roy-tong.github.io/archive/) · [开源项目](https://roy-tong.github.io/#projects) · [联系我](https://roy-tong.github.io/support/)
+[个人主页](https://roy-tong.github.io/) · [全部文章](https://roy-tong.github.io/archive/) · [Agent 工具目录](https://raw.githubusercontent.com/roy-tong/roy-tong/main/agent-tools.json) · [联系我](https://roy-tong.github.io/support/)
 
 ## 最近的文章
 
@@ -21,10 +21,37 @@
 
 ## 开源项目
 
-| 项目 | 用途 |
-| --- | --- |
-| [iRead](https://github.com/roy-tong/iRead) | 持续研究：发现信源、采集内容并生成证据感知的日报、周报和月报 |
-| [User Demand Research](https://github.com/roy-tong/sure-user-demand-research) | 把访谈、评论与行为记录整理为可审计、可反驳的需求证据 |
-| [Bilibili Video to Transcript](https://github.com/roy-tong/bilibili-transcript-pipeline) | 把公开视频转换为带时间戳、可检索、便于继续研究的文本 |
+项目展示名先说明任务，品牌名和稳定 ID 用于调用。
+
+| 你要完成的任务 | 项目 | Agent 接口 | 输入 → 可验收输出 |
+| --- | --- | --- | --- |
+| 持续监测一个领域 | [iRead Research Monitor](https://github.com/roy-tong/iRead) | Skill + 本地 CLI | 研究领域 → 待审核信源、日报、周报、月报 |
+| 判断用户证据能否支持需求结论 | [User Demand Research (SURE)](https://github.com/roy-tong/user-demand-research) | Skill + 研究验收器 | 决策问题与证据 → 研究契约、证据账本、机会卡、证据缺口 |
+| 把 B 站视频变成研究文本 | [Bilibili Video to Transcript](https://github.com/roy-tong/bilibili-transcript-pipeline) | Skill + 本地 CLI | URL / BV 号 → 时间戳 Markdown、SRT、JSON |
+| 检索我的公开研究 | [Roy's AI Product Research Library](https://github.com/roy-tong/roy-tong.github.io) | Skill + `llms.txt` | 研究问题 → 原文链接、综合判断、待核验缺口 |
+
+`iRead` 保留为品牌，但始终与 `Research Monitor` 连用；`SURE` 保留为方法名，仓库与 Skill 统一为 `user-demand-research`。
+
+### 让 Agent 自动选择
+
+不必先记住项目名。安装一次只负责路由的 `find-research-tool`：
+
+```bash
+gh skill preview roy-tong/roy-tong find-research-tool
+gh skill install roy-tong/roy-tong find-research-tool --agent codex --scope user
+```
+
+然后直接描述任务：
+
+```text
+用 find-research-tool 为这个任务选择工具：
+我需要持续跟踪家庭机器人，先审核信源，再生成每周变化报告。
+```
+
+路由器会选择项目、说明运行边界并给出最小可验收动作；它不会暗中安装其他工具。机器可读目录固定在 [`agent-tools.json`](https://raw.githubusercontent.com/roy-tong/roy-tong/main/agent-tools.json)，包含任务词、排除场景、安装命令、输入输出、首次成功标准、平台限制和隐私边界。
+
+所有项目都遵循同一服务约定：先预览接口，再安装；先通过低风险 `first_success`，再处理真实数据或启用长期任务；返回实际产物和失败条件，不把 Star、Clone 或安装量冒充成功调用。
+
+[Agent 可读研究索引](https://roy-tong.github.io/llms.txt) · [发现与安装指标](metrics/README.md) · [调用统计边界](metrics/CALL-MEASUREMENT.md)
 
 过去近十年，我一直在 AI、软件与智能硬件之间做产品，也经历过多次创业。现在主要关注具身智能、AI 硬件和 Agent 产品。

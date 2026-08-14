@@ -32,10 +32,12 @@
       "type": "string",
       "enum": [
         "iread",
+        "user-demand-research",
         "sure-user-demand-research",
         "bilibili-transcript-pipeline",
         "research-knowledge-base"
-      ]
+      ],
+      "description": "Use user-demand-research for new events. sure-user-demand-research remains accepted only for pre-2026-08-14 compatibility."
     },
     "version": {
       "type": "string",

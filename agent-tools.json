@@ -1,0 +1,260 @@
+{
+  "$schema": "https://raw.githubusercontent.com/roy-tong/roy-tong/main/schemas/agent-tools.schema.json",
+  "schema_version": "1.0",
+  "updated_at": "2026-08-14",
+  "catalog_url": "https://raw.githubusercontent.com/roy-tong/roy-tong/main/agent-tools.json",
+  "purpose": "Route a user task to the smallest suitable Roy Tong research tool without confusing discovery, installation, invocation, and successful output.",
+  "router": {
+    "skill": "find-research-tool",
+    "preview_command": "gh skill preview roy-tong/roy-tong find-research-tool",
+    "install_command": "gh skill install roy-tong/roy-tong find-research-tool --agent codex --scope user",
+    "invoke_example": "Use find-research-tool to choose the right research tool for this task and give me the safest first successful action."
+  },
+  "tools": [
+    {
+      "id": "research-monitor",
+      "name": "iRead Research Monitor",
+      "brand": "iRead",
+      "summary": "Continuously discover and review sources, collect authorized feeds, and produce evidence-aware daily, weekly, and monthly research updates.",
+      "match": [
+        "continuous research monitoring",
+        "research subscription",
+        "source discovery",
+        "recurring research digest",
+        "industry monitoring",
+        "持续研究监测",
+        "行业监测",
+        "信源发现",
+        "研究日报",
+        "研究周报"
+      ],
+      "avoid": [
+        "one-off web search",
+        "summarize a supplied document",
+        "generic RSS reader advice"
+      ],
+      "repository": "https://github.com/roy-tong/iRead",
+      "status": "public-beta",
+      "surfaces": [
+        {
+          "type": "agent-skill",
+          "name": "iread"
+        },
+        {
+          "type": "local-cli",
+          "name": "bin/iread"
+        }
+      ],
+      "skill": {
+        "name": "iread",
+        "preview_command": "gh skill preview roy-tong/iRead iread",
+        "install_command": "gh skill install roy-tong/iRead iread --agent codex --scope user"
+      },
+      "input": [
+        "one or more research fields",
+        "report depth",
+        "reviewed source changes",
+        "collection authorization"
+      ],
+      "output": [
+        "source proposal",
+        "coverage audit",
+        "daily, weekly, and monthly reports",
+        "trend ledger"
+      ],
+      "invoke_example": "Use iRead to propose sources for home robotics. Do not collect or schedule anything until I approve the sources.",
+      "first_success": {
+        "action": "Run the installed iRead Skill's offline doctor and demo before creating a live subscription.",
+        "success": "The demo creates local Markdown and JSON outputs and reports network_used: false and model_used: false."
+      },
+      "constraints": [
+        "Live monitoring currently targets macOS and Python 3.9+.",
+        "Collection, backfill, WeChat access, and schedules require the approvals declared by the tool."
+      ],
+      "privacy": "Configuration, credentials, collected articles, and reports remain local by default."
+    },
+    {
+      "id": "user-demand-research",
+      "name": "User Demand Research (SURE)",
+      "brand": "SURE — Structured User Research with Evidence",
+      "summary": "Turn interviews, reviews, forums, tickets, and behavior records into auditable user-demand evidence and falsifiable opportunity decisions.",
+      "match": [
+        "user demand research",
+        "customer discovery",
+        "voice of customer analysis",
+        "Jobs to be Done evidence",
+        "willingness to pay evidence",
+        "opportunity validation",
+        "用户需求研究",
+        "评论挖掘",
+        "付费意愿",
+        "机会验证",
+        "证据分级"
+      ],
+      "avoid": [
+        "generic market sizing",
+        "inventing personas without evidence",
+        "treating feature mentions or likes as demand"
+      ],
+      "repository": "https://github.com/roy-tong/user-demand-research",
+      "status": "public",
+      "surfaces": [
+        {
+          "type": "agent-skill",
+          "name": "user-demand-research"
+        },
+        {
+          "type": "validator",
+          "name": "validate_study.py"
+        }
+      ],
+      "skill": {
+        "name": "user-demand-research",
+        "preview_command": "gh skill preview roy-tong/user-demand-research user-demand-research",
+        "install_command": "gh skill install roy-tong/user-demand-research user-demand-research --agent codex --scope user"
+      },
+      "input": [
+        "decision question",
+        "research scope and prohibited inferences",
+        "interviews, reviews, forums, tickets, or behavior records"
+      ],
+      "output": [
+        "research contract",
+        "evidence ledger with E0-E5 grades",
+        "counter-evidence and gaps",
+        "opportunity cards and falsification backlog"
+      ],
+      "invoke_example": "Use user-demand-research to audit whether this feedback supports willingness to pay. Return counter-evidence, gaps, and the cheapest falsification test.",
+      "first_success": {
+        "action": "From a repository checkout, run python3 skills/user-demand-research/scripts/validate_study.py examples/sample-study.",
+        "success": "The synthetic sample returns status: pass and verifies the research contract and all three evidence chains."
+      },
+      "constraints": [
+        "Convenience samples do not support population prevalence or market-share claims.",
+        "Blocked, private, or access-controlled sources require a compliant user-authorized route."
+      ],
+      "privacy": "The Skill does not require uploading research questions, source records, identities, or local paths to the maintainer."
+    },
+    {
+      "id": "bilibili-video-to-transcript",
+      "name": "Bilibili Video to Transcript",
+      "brand": "Bilibili Transcript",
+      "summary": "Convert public Bilibili videos into timestamped Markdown, SRT subtitles, structured ASR JSON, summaries, and a batch manifest.",
+      "match": [
+        "Bilibili transcript",
+        "Bilibili video to text",
+        "BV transcription",
+        "Whisper subtitles",
+        "video research ingestion",
+        "B站视频转文字",
+        "B站转写",
+        "字幕提取",
+        "BV号批量处理"
+      ],
+      "avoid": [
+        "non-Bilibili media",
+        "private or access-controlled videos",
+        "summarizing a transcript already supplied"
+      ],
+      "repository": "https://github.com/roy-tong/bilibili-transcript-pipeline",
+      "status": "public-beta",
+      "surfaces": [
+        {
+          "type": "agent-skill",
+          "name": "bilibili-transcript"
+        },
+        {
+          "type": "local-cli",
+          "name": "bili-transcript"
+        }
+      ],
+      "skill": {
+        "name": "bilibili-transcript",
+        "preview_command": "gh skill preview roy-tong/bilibili-transcript-pipeline bilibili-transcript",
+        "install_command": "gh skill install roy-tong/bilibili-transcript-pipeline bilibili-transcript --agent codex --scope user"
+      },
+      "input": [
+        "one or more public Bilibili URLs or BV ids",
+        "source language and transcribe or translate mode",
+        "optional proper-noun prompt"
+      ],
+      "output": [
+        "timestamped Markdown",
+        "SRT subtitles",
+        "complete ASR JSON",
+        "per-video summary and batch manifest"
+      ],
+      "invoke_example": "Use bilibili-transcript to convert these public BV links into timestamped Markdown, SRT, and JSON. Proper nouns include VLA and Physical Intelligence.",
+      "first_success": {
+        "action": "Install the base CLI and run bili-transcript demo --out-dir ./bili-transcript-demo before downloading an ASR model.",
+        "success": "The demo creates the full output contract and reports network_used: false and asr_used: false."
+      },
+      "constraints": [
+        "Live transcription is currently product-validated on Apple Silicon macOS with MLX Whisper.",
+        "Only process content that is public without bypassing access controls."
+      ],
+      "privacy": "The project does not send video URLs, transcripts, output directories, or device identity to the maintainer."
+    },
+    {
+      "id": "ai-product-research-library",
+      "name": "Roy's AI Product Research Library",
+      "brand": "Roy's Notes",
+      "summary": "Search and synthesize Roy Tong's public writing about AI agents, embodied AI, intelligent hardware, product decisions, and commercialization.",
+      "match": [
+        "AI product research",
+        "AI agent research",
+        "embodied AI research",
+        "intelligent hardware research",
+        "product commercialization",
+        "Roy Tong public research",
+        "AI产品研究",
+        "Agent研究",
+        "具身智能",
+        "智能硬件",
+        "商业化产品"
+      ],
+      "avoid": [
+        "searching private memory or unpublished files",
+        "treating an older essay as current fact without verification",
+        "generic web research unrelated to Roy Tong's published work"
+      ],
+      "repository": "https://github.com/roy-tong/roy-tong.github.io",
+      "status": "public-read-only",
+      "surfaces": [
+        {
+          "type": "agent-skill",
+          "name": "research-knowledge-base"
+        },
+        {
+          "type": "web-index",
+          "name": "https://roy-tong.github.io/llms.txt"
+        }
+      ],
+      "skill": {
+        "name": "research-knowledge-base",
+        "preview_command": "gh skill preview roy-tong/roy-tong.github.io research-knowledge-base",
+        "install_command": "gh skill install roy-tong/roy-tong.github.io research-knowledge-base --agent codex --scope user"
+      },
+      "input": [
+        "research question",
+        "optional topic or publication window"
+      ],
+      "output": [
+        "relevant original pages",
+        "source-linked synthesis",
+        "published-analysis versus external-fact separation",
+        "unresolved or stale evidence gaps"
+      ],
+      "invoke_example": "Use research-knowledge-base to find Roy Tong's public analysis of embodied AI product strategy and return direct source links plus evidence gaps.",
+      "first_success": {
+        "action": "Open https://roy-tong.github.io/llms.txt, select a relevant page, and open the original page before summarizing it.",
+        "success": "The answer includes direct public URLs and distinguishes Roy Tong's published analysis from facts that need current verification."
+      },
+      "constraints": [
+        "Network access to the public site is required.",
+        "Current or high-stakes claims require separate authoritative verification."
+      ],
+      "privacy": "The interface is read-only and exposes only public pages, not private memory or unpublished documents."
+    }
+  ]
+}
