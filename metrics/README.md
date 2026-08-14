@@ -36,3 +36,4 @@ GitHub Traffic 只保留最近 14 天。为了形成长期趋势，应至少每�
 - skills.sh 的匿名安装数是当前最接近“安装”的公开指标；用户可以通过 `DISABLE_TELEMETRY=1` 或 `DO_NOT_TRACK=1` 退出统计。
 - 2026-08-12 已完成四个 Skill 的维护者安装验收；这四次不能作为自然用户增长解读。
 - 2026-08-14 仓库与 Skill 的规范名称统一为 `user-demand-research`；旧仓库地址由 GitHub 重定向，迁移前的历史指标仍保留在旧名称下。
+- 2026-08-14 为触发 skills.sh 收录并验证真实安装路径，维护者各安装一次 `find-research-tool` 和新版 `user-demand-research`；这两次必须从自然安装增长中排除。
