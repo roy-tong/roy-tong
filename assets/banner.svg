@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320">
+  <rect width="1280" height="320" fill="#0d1117"/>
+  <line x1="80" y1="96" x2="1200" y2="96" stroke="#21262d" stroke-width="1"/>
+  <line x1="80" y1="224" x2="1200" y2="224" stroke="#21262d" stroke-width="1"/>
+  <text x="640" y="66" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif" font-size="18" letter-spacing="6" fill="#8b949e">ROY TONG · 产品经理 · 连续创业者</text>
+  <text x="640" y="156" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif" font-size="52" font-weight="700" fill="#f0f6fc">把前沿技术转化为可商业化的产品</text>
+  <text x="640" y="200" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif" font-size="20" letter-spacing="2" fill="#8b949e">AI × 产品 × 智能硬件 × 商业化 × 复杂系统</text>
+  <text x="640" y="266" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',sans-serif" font-size="16" fill="#6e7681">研究新技术如何从概念走向真实需求、产品与商业 · roy-tong.github.io</text>
+</svg>
