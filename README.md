@@ -10,7 +10,7 @@
 
 **AI Agent · Physical AI · Intelligent Hardware**
 
-[个人主页](https://roy-tong.github.io/) · [Research](https://roy-tong.github.io/#research) · [Essays](https://roy-tong.github.io/#essays) · [Projects](https://roy-tong.github.io/#projects) · [X / Twitter](https://x.com/elliwoodtong)
+[个人主页](https://roy-tong.github.io/) · [Research](https://roy-tong.github.io/research/) · [Essays](https://roy-tong.github.io/essays/) · [Projects](https://roy-tong.github.io/projects/) · [X / Twitter](https://x.com/elliwoodtong)
 
 ---
 
@@ -25,7 +25,7 @@
 | **端侧算力 / On-device AI** | 模型、算力、隐私、功耗与终端形态如何共同决定 AI 产品体验 |
 | **Agent** | Agent 如何获得上下文、选择能力、调用软件，并形成新的软件经济 |
 
-[进入 Research →](https://roy-tong.github.io/#research)
+[进入 Research →](https://roy-tong.github.io/research/)
 
 ## Essays
 
@@ -36,7 +36,7 @@
 - [空间计算需要自己的“触控时刻”](https://roy-tong.github.io/notes/spatial-computing-touch-moment/) — 新计算平台需要稳定、可组合、可撤销的通用交互原语。
 - [家庭机器人为什么技术上更难，经济上可能更丰富](https://roy-tong.github.io/notes/home-robots-harder-richer/) — 家庭是变化环境、多人关系与多种支付机制叠加的生活系统。
 
-[查看全部 Essays →](https://roy-tong.github.io/archive/)
+[查看全部 Essays →](https://roy-tong.github.io/essays/)
 
 ## Projects
 
