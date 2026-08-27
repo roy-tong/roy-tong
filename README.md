@@ -58,10 +58,19 @@
 
 | 工具 | 用途 |
 | --- | --- |
-| [User Demand Research (SURE)](https://github.com/roy-tong/user-demand-research) | 把访谈、评论与行为记录整理为可审计的需求证据 |
+| [User Demand Research (SURE)](https://github.com/roy-tong/user-demand-research) | 输入目标、范围、样本量与平台类型，产出可审计的需求证据与调研报告（Skill + CLI + MCP） |
 | [iRead Research Monitor](https://github.com/roy-tong/iRead) | 持续发现信源并生成日报、周报、月报 |
 | [Bilibili Video to Transcript](https://github.com/roy-tong/bilibili-transcript-pipeline) | 把公开视频转换为带时间戳、可检索的研究文本 |
-| [AI Product Research Library](https://github.com/roy-tong/roy-tong.github.io) | 我的公开研究、文章与 Agent 可读索引 |
+| [Roy's AI Product Research Library](https://github.com/roy-tong/roy-tong.github.io) | 我的公开研究、文章与 Agent 可读索引 |
+
+机器可读工具目录（Agent 路由）：`https://raw.githubusercontent.com/roy-tong/roy-tong/main/agent-tools.json`
+
+路由 Skill：
+
+```bash
+gh skill preview roy-tong/roy-tong find-research-tool
+gh skill install roy-tong/roy-tong find-research-tool --agent codex --scope user
+```
 
 ---
 
