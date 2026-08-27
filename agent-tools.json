@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/roy-tong/roy-tong/main/schemas/agent-tools.schema.json",
   "schema_version": "1.0",
-  "updated_at": "2026-08-14",
+  "updated_at": "2026-08-27",
   "catalog_url": "https://raw.githubusercontent.com/roy-tong/roy-tong/main/agent-tools.json",
   "purpose": "Route a user task to the smallest suitable Roy Tong research tool without confusing discovery, installation, invocation, and successful output.",
   "router": {
@@ -77,7 +77,7 @@
       "id": "user-demand-research",
       "name": "User Demand Research (SURE)",
       "brand": "SURE — Structured User Research with Evidence",
-      "summary": "Turn interviews, reviews, forums, tickets, and behavior records into auditable user-demand evidence and falsifiable opportunity decisions.",
+      "summary": "Turn a research goal, region, sample size, and platform types into an auditable demand-research study: platform feasibility from a reviewed GitHub open-source connector registry, quota planning, deterministic corpus signals, and a research-status report with E0-E5 evidence and counter-evidence gates.",
       "match": [
         "user demand research",
         "customer discovery",
@@ -85,16 +85,24 @@
         "Jobs to be Done evidence",
         "willingness to pay evidence",
         "opportunity validation",
+        "social media listening for product decisions",
+        "Reddit X YouTube Amazon review research",
+        "open-source data connector review",
         "用户需求研究",
         "评论挖掘",
         "付费意愿",
         "机会验证",
-        "证据分级"
+        "证据分级",
+        "场景研究",
+        "调研报告",
+        "社媒调研",
+        "电商评论研究"
       ],
       "avoid": [
         "generic market sizing",
         "inventing personas without evidence",
-        "treating feature mentions or likes as demand"
+        "treating feature mentions or likes as demand",
+        "scraping platforms that block third-party collection"
       ],
       "repository": "https://github.com/roy-tong/user-demand-research",
       "status": "public",
@@ -104,8 +112,15 @@
           "name": "user-demand-research"
         },
         {
-          "type": "validator",
-          "name": "validate_study.py"
+          "type": "local-cli",
+          "name": "sure.py",
+          "commands": ["plan", "init", "check", "signals", "report", "connectors"]
+        },
+        {
+          "type": "mcp-server",
+          "name": "sure-research",
+          "script": "skills/user-demand-research/scripts/sure_mcp.py",
+          "tools": ["sure_plan", "sure_init", "sure_check", "sure_signals", "sure_report", "sure_connectors", "sure_platform_map"]
         }
       ],
       "skill": {
@@ -114,24 +129,29 @@
         "install_command": "gh skill install roy-tong/user-demand-research user-demand-research --agent codex --scope user"
       },
       "input": [
-        "decision question",
-        "research scope and prohibited inferences",
-        "interviews, reviews, forums, tickets, or behavior records"
+        "research goal (product, user, or scene)",
+        "region (cn, overseas, or global) and optional market label",
+        "sample size target",
+        "platform types (forum, social, video, ecommerce, crowdfunding)",
+        "or an existing corpus to audit"
       ],
       "output": [
-        "research contract",
-        "evidence ledger with E0-E5 grades",
-        "counter-evidence and gaps",
-        "opportunity cards and falsification backlog"
+        "platform feasibility and collection task list",
+        "quota-allocated source plan and platform route matrices",
+        "evidence records with E0-E5 grades and provenance",
+        "deterministic corpus signals",
+        "demand judgments with counter-evidence and gaps",
+        "Chinese research-status report"
       ],
-      "invoke_example": "Use user-demand-research to audit whether this feedback supports willingness to pay. Return counter-evidence, gaps, and the cheapest falsification test.",
+      "invoke_example": "Use user-demand-research to plan a study: goal 'AI 眼镜在海外社媒的用户不满与替代方案', region overseas, sample size 100000, platform types forum+social+video. Report feasibility and the next gate.",
       "first_success": {
-        "action": "From a repository checkout, run python3 skills/user-demand-research/scripts/validate_study.py examples/sample-study.",
-        "success": "The synthetic sample returns status: pass and verifies the research contract and all three evidence chains."
+        "action": "From a repository checkout, run python3 skills/user-demand-research/scripts/sure.py check examples/sample-study --stage full --write-report.",
+        "success": "The synthetic sample returns status: pass with all three evidence chains verified, offline and dependency-free."
       },
       "constraints": [
         "Convenience samples do not support population prevalence or market-share claims.",
-        "Blocked, private, or access-controlled sources require a compliant user-authorized route."
+        "Only registry-supported open-source connectors may collect; blocked routes stay recorded gaps and are never replaced by commercial providers, merchant APIs, or login-based scraping.",
+        "Reddit access requires an approved Data API app registered by 2026-09-30."
       ],
       "privacy": "The Skill does not require uploading research questions, source records, identities, or local paths to the maintainer."
     },
