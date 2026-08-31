@@ -63,7 +63,7 @@ Judgments worth keeping, discussing, and falsifying (中文):
 | [User Demand Research (SURE)](https://github.com/roy-tong/user-demand-research) | auditable demand evidence and research reports from goals, scope, and sample design (Skill + CLI + MCP) |
 | [iRead Research Monitor](https://github.com/roy-tong/iRead) | continuous source discovery with evidence-aware daily / weekly / monthly digests |
 | [Bilibili Video to Transcript](https://github.com/roy-tong/bilibili-transcript-pipeline) | public videos → timestamped, searchable research text |
-| [AI Product Research Library](https://github.com/roy-tong/roy-tong.github.io) | public research, essays, and an agent-readable index |
+| [Roy's AI Product Research Library](https://github.com/roy-tong/roy-tong.github.io) | public research, essays, and an agent-readable index |
 
 Machine-readable tool catalog (agent routing): `https://raw.githubusercontent.com/roy-tong/roy-tong/main/agent-tools.json`
 
