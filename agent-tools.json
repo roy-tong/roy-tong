@@ -36,8 +36,8 @@
    "status": "public-beta",
    "surfaces": [
     {
-     "type": "github-repo",
-     "name": "roy-tong/AgentMeasure"
+     "type": "agent-skill",
+     "name": "agentmeasure"
     },
     {
      "type": "local-cli",
@@ -62,7 +62,13 @@
     "The packaged conformance CLI is in development; runners currently live in the repository.",
     "Provider audit entry is email-first with a zero-install sample check."
    ],
-   "privacy": "Fixtures and checks run locally by default; no telemetry leaves the machine."
+   "privacy": "Fixtures and checks run locally by default; no telemetry leaves the machine.",
+   "brand": "AgentMeasure",
+   "skill": {
+    "name": "agentmeasure",
+    "preview_command": "gh skill preview roy-tong/AgentMeasure agentmeasure",
+    "install_command": "gh skill install roy-tong/AgentMeasure agentmeasure --agent codex --scope user"
+   }
   },
   {
    "id": "research-monitor",

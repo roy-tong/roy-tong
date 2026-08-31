@@ -1,6 +1,6 @@
 ---
 name: find-research-tool
-description: Route research tasks to Roy Tong's open-source Agent Skills and local-first tools. Use when a user needs continuous research monitoring, source discovery, recurring research digests, evidence-led user-demand or voice-of-customer analysis, willingness-to-pay validation, Bilibili video-to-text or subtitles, Roy Tong's public AI product research, or asks which Roy Tong project, Skill, CLI, or research tool to use. 中文触发：选择研究工具、持续行业监测、信源发现、用户需求研究、评论挖掘、付费意愿、B站视频转文字、检索 Roy Tong 公开研究。
+description: Route research tasks to Roy Tong's open-source Agent Skills and local-first tools. Use when a user needs continuous research monitoring, source discovery, recurring research digests, evidence-led user-demand or voice-of-customer analysis, willingness-to-pay validation, Bilibili video-to-text or subtitles, Roy Tong's public AI product research, measurement-conformance checks on agent telemetry (retry accounting, operation vs attempt, token double counting), or asks which Roy Tong project, Skill, CLI, or research tool to use. 中文触发：选择研究工具、持续行业监测、信源发现、用户需求研究、评论挖掘、付费意愿、B站视频转文字、检索 Roy Tong 公开研究、遥测语义核查、重试计数、用量口径。
 ---
 
 # Find a Research Tool
@@ -15,6 +15,7 @@ If it is temporarily unavailable, use this fallback:
 
 | Task | Select | Target Skill |
 | --- | --- | --- |
+| Check whether agent telemetry double counts retries, mixes operation and attempt grains, or double counts token subsets; run measurement-conformance vectors on a fixture | AgentMeasure | `agentmeasure` |
 | Monitor a field repeatedly; discover and review sources; produce recurring digests | iRead Research Monitor | `iread` |
 | Audit feedback or demand claims; grade evidence; validate an opportunity or willingness to pay | User Demand Research (SURE) | `user-demand-research` |
 | Convert public Bilibili URLs or BV ids to timestamped Markdown, SRT, and JSON | Bilibili Video to Transcript | `bilibili-transcript` |
