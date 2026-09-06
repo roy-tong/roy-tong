@@ -1,79 +1,71 @@
-<p align="center">
-  <img src="assets/banner.svg" alt="ROY TONG · Product Manager · Repeat Founder — turning frontier tech into shippable products" width="100%">
-</p>
-
 # Roy Tong
 
-**Building [AgentMeasure](https://github.com/roy-tong/AgentMeasure) — open measurement & conformance infrastructure for AI agents.**
+**Building [AgentMeasure](https://github.com/roy-tong/AgentMeasure) — check whether your agent metrics mean what their labels claim.**
 
-Measure what agent telemetry actually counts: attempts, operations, retries, token accounting, and evidence boundaries.
+[Run the checks](https://github.com/roy-tong/AgentMeasure/tree/main/conformance/pack) · [Project website](https://roy-tong.github.io/AgentMeasure/) · [中文说明](https://github.com/roy-tong/AgentMeasure/blob/main/README.zh-CN.md) · [My blog](https://roy-tong.github.io/)
 
-[AgentMeasure](https://github.com/roy-tong/AgentMeasure) · [Conformance vectors](https://github.com/roy-tong/AgentMeasure/tree/main/conformance) · [Website](https://roy-tong.github.io/AgentMeasure/) · [中文主页](https://roy-tong.github.io/)
+## One task. Two attempts. What do you count?
 
-### Recent external evidence
+One declared operation has a failed attempt, then a successful retry:
 
-- ✓ [OpenLIT](https://github.com/openlit/openlit/pull/1476) — token-accounting invariant merged upstream (reasoning ⊂ output; adding them reports tokens that never happened)
-- ✓ [Urusilla](https://github.com/roy-tong/AgentMeasure/tree/main/conformance/vectors/external) — 2 external conformance vectors → [3 defects found and fixed](https://github.com/roy-tong/AgentMeasure/issues/12), each with the finder's fixture as the regression guard
-- ✓ Agent semantics reviewed in public across [Langfuse](https://github.com/orgs/langfuse/discussions/16383) · [DeepEval](https://github.com/confident-ai/deepeval/issues/3110) · OTel GenAI
-
----
-
-## Building now — AgentMeasure
-
-**AgentMeasure tests whether agent telemetry metrics actually mean what their labels claim.**
-
-- Attempts vs operations — one logical use vs N executions
-- Retry accounting — a retried call is not two users
-- Token double counting — subsets must not be added into totals
-- Evidence vs inference — what a trace proves vs what it merely suggests
-- Eval repeatability — n runs are n measurements, not one verdict
-
-Proven in the wild: an invariant [merged into OpenLIT's main](https://github.com/openlit/openlit/pull/1476), two external conformance vectors from an independent contributor, three externally found defects fixed publicly. Long term: a common measurement layer for the Agent Capability Economy.
-
-[Try the 2-minute local demo](https://github.com/roy-tong/AgentMeasure#try-it-in-2-minutes) · [Send a trace, get a measurement check](https://github.com/roy-tong/AgentMeasure#external-provider-trials)
-
-## Research
-
-Product and industry research in four directions. Facts first; conclusions revised as evidence changes.
-
-| Direction | Central question |
+| Measurement | Result |
 | --- | --- |
-| **Embodied Intelligence** | how robots move from demo to real tasks, product definition, and commercialization |
-| **Multimodal Interaction** | what the next interaction paradigm looks like when voice, vision, and space become I/O |
-| **On-device AI** | how models, compute, privacy, and form factors jointly shape the AI product experience |
-| **Agents** | how agents acquire context, choose capabilities, call software — and form a new software economy |
+| Logical operations | 1 |
+| Execution attempts | 2 |
+| Operation success | 1 / 1 = 100% |
+| Attempt success | 1 / 2 = 50% |
 
-[Research library →](https://roy-tong.github.io/research/)
+Both success rates describe the same execution, at different grains. If a trace cannot establish the grouping or outcome, the result is **UNPROVABLE**.
 
-## Writing
+AgentMeasure turns these distinctions into local checks and CI results: **PASS / FAIL / UNPROVABLE**. It is useful for agent-framework maintainers, MCP/API providers, and teams comparing agent evaluations.
 
-Judgments worth keeping, discussing, and falsifying (中文):
+## Evidence you can inspect
 
-- [AI Native 之后，产品的基本单位变了](https://roy-tong.github.io/notes/ai-native-basic-unit/)
-- [RAG 之后，Agent 需要 Context Recommendation](https://roy-tong.github.io/notes/agent-context-recommendation-after-rag/)
-- [空间计算需要自己的“触控时刻”](https://roy-tong.github.io/notes/spatial-computing-touch-moment/)
-- [家庭机器人为什么技术上更难，经济上可能更丰富](https://roy-tong.github.io/notes/home-robots-harder-richer/)
+- **Merged upstream:** my [OpenLIT token-accounting fix](https://github.com/openlit/openlit/pull/1476) prevents reasoning tokens from being added to an output total that already includes them.
+- **Independent test cases:** [Urusilla’s external conformance vectors](https://github.com/roy-tong/AgentMeasure/tree/main/conformance/vectors/external) exposed measurement defects, including [an operation-grain metric aggregated at assignment grain](https://github.com/roy-tong/AgentMeasure/issues/12). The report records the fix and regression fixture.
+- **Explicit limits:** the [Conformance Pack](https://github.com/roy-tong/AgentMeasure/tree/main/conformance/pack) checks execution grain, retry reconciliation, cost preservation, operation grain, and evidence boundaries. Token and cache checks are **not yet supported** by the pack; the OpenLIT fix is a separate upstream contribution.
 
-[All essays →](https://roy-tong.github.io/essays/)
+## Try it locally
 
-## Other tools
+With Git and Python 3 installed, run the included fixtures:
+
+```bash
+git clone https://github.com/roy-tong/AgentMeasure.git
+cd AgentMeasure
+python3 conformance/pack/agentmeasure selftest
+```
+
+This checks the repository’s fixtures. To check your own measurements, [prepare an FMT-002 fixture and optionally provide metric claims](https://github.com/roy-tong/AgentMeasure/tree/main/conformance/pack#input-contract). Raw data stays local unless you choose to share it.
+
+**Help make the checks better:** [contribute a counterexample or discuss a measurement](https://github.com/roy-tong/AgentMeasure/discussions). Start with a synthetic or public fixture and the number you expected. If the project is useful, [star or share AgentMeasure](https://github.com/roy-tong/AgentMeasure).
+
+## The question behind the project
+
+When agents become software consumers, what counts as one use, one completed task, or one useful outcome? I am building AgentMeasure to make those units inspectable.
+
+[Read the essay](https://roy-tong.github.io/en/notes/when-the-software-consumer-becomes-an-agent/) · [中文：当软件的消费者变成 Agent](https://roy-tong.github.io/notes/when-the-software-consumer-becomes-an-agent/)
+
+<details>
+<summary>Other research tools and agent-readable catalog</summary>
 
 | Tool | What it does |
 | --- | --- |
-| [User Demand Research (SURE)](https://github.com/roy-tong/user-demand-research) | auditable demand evidence and research reports from goals, scope, and sample design (Skill + CLI + MCP) |
-| [iRead Research Monitor](https://github.com/roy-tong/iRead) | continuous source discovery with evidence-aware daily / weekly / monthly digests |
-| [Bilibili Video to Transcript](https://github.com/roy-tong/bilibili-transcript-pipeline) | public videos → timestamped, searchable research text |
-| [Roy's AI Product Research Library](https://github.com/roy-tong/roy-tong.github.io) | public research, essays, and an agent-readable index |
+| [iRead Research Monitor](https://github.com/roy-tong/iRead) | Ongoing source discovery and evidence-aware research digests |
+| [User Demand Research (SURE)](https://github.com/roy-tong/user-demand-research) | Auditable demand evidence and research reports (Skill + CLI + MCP) |
+| [Bilibili Video to Transcript](https://github.com/roy-tong/bilibili-transcript-pipeline) | Public videos to timestamped, searchable research text |
+| [Roy's AI Product Research Library](https://github.com/roy-tong/roy-tong.github.io) | Public research, essays, and a read-only agent index |
 
-Machine-readable tool catalog (agent routing): `https://raw.githubusercontent.com/roy-tong/roy-tong/main/agent-tools.json`
-
-Router skill:
+Machine-readable catalog: https://raw.githubusercontent.com/roy-tong/roy-tong/main/agent-tools.json
 
 ```bash
 gh skill preview roy-tong/roy-tong find-research-tool
 gh skill install roy-tong/roy-tong find-research-tool --agent codex --scope user
 ```
 
+The router helps select a tool; it does not perform the selected tool’s work.
+
+</details>
+
 ---
 
-Product manager and repeat founder, ~10 years across AI, software, and intelligent hardware. [About](https://roy-tong.github.io/about/) · [GitHub](https://github.com/roy-tong) · [X / Twitter](https://x.com/elliwoodtong) · [Contact](https://roy-tong.github.io/support/)
+I also write about AI, products, embodied intelligence, and building companies. [Personal blog](https://roy-tong.github.io/) · [About](https://roy-tong.github.io/about/) · [X](https://x.com/elliwoodtong) · [Contact](https://roy-tong.github.io/support/)
