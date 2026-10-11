@@ -1,7 +1,7 @@
 {
  "$schema": "https://raw.githubusercontent.com/roy-tong/roy-tong/main/schemas/agent-tools.schema.json",
  "schema_version": "1.0",
- "updated_at": "2026-08-31",
+ "updated_at": "2026-10-11",
  "catalog_url": "https://raw.githubusercontent.com/roy-tong/roy-tong/main/agent-tools.json",
  "purpose": "Route a user task to the smallest suitable Roy Tong research tool without confusing discovery, installation, invocation, and successful output.",
  "router": {
@@ -288,6 +288,67 @@
     "Only process content that is public without bypassing access controls."
    ],
    "privacy": "The project does not send video URLs, transcripts, output directories, or device identity to the maintainer."
+  },
+  {
+   "id": "research-to-publish",
+   "name": "Research to Publish",
+   "summary": "Turn local research projects, pinned GitHub research, and ChatGPT sessions into sourced, versioned website articles with WeChat and Xiaohongshu delivery packages, review gates, and publication receipts.",
+   "match": [
+    "research to article",
+    "content pipeline",
+    "one research three readers",
+    "WeChat article package",
+    "Xiaohongshu card",
+    "publication receipts",
+    "研究转文章",
+    "内容生产管线",
+    "公众号交付包",
+    "小红书卡片",
+    "发布回执"
+   ],
+   "avoid": [
+    "auto-publishing without human review",
+    "social platform analytics",
+    "writing without checkable sources"
+   ],
+   "repository": "https://github.com/roy-tong/research-to-publish",
+   "status": "public-beta",
+   "surfaces": [
+    {
+     "type": "agent-skill",
+     "name": "research-to-publish"
+    },
+    {
+     "type": "local-cli",
+     "name": "python3 -m research_to_publish"
+    }
+   ],
+   "skill": {
+    "name": "research-to-publish",
+    "preview_command": "gh skill preview roy-tong/research-to-publish research-to-publish",
+    "install_command": "gh skill install roy-tong/research-to-publish research-to-publish --agent codex --scope user"
+   },
+   "input": [
+    "a workspace of local project texts, pinned GitHub files, or ChatGPT exports",
+    "a research topic with questions, judgments, citations, and boundaries",
+    "editorial drafts per platform"
+   ],
+   "output": [
+    "Jekyll website article with provenance and versions",
+    "WeChat inline-styled HTML and Xiaohongshu copy with 1080x1440 SVG cards",
+    "review bindings, export checks, publication receipts, and revision prompts"
+   ],
+   "invoke_example": "Use research-to-publish to turn this SURE report workspace into a website article plus WeChat and Xiaohongshu packages, and refuse export until I clear review.",
+   "first_success": {
+    "action": "Run python3 examples/demo.py --workspace /tmp/r2p-demo, then python3 -m research_to_publish --workspace /tmp/r2p-demo status one-research-three-readers.",
+    "success": "The demo builds a complete offline workspace with sources, drafts, review binding, and delivery packages, with no network or model API access."
+   },
+   "constraints": [
+    "Python 3.9+ with zero third-party runtime dependencies.",
+    "Review gates are human decisions; exports fail closed when sources or drafts changed after review.",
+    "WeChat and Xiaohongshu delivery is by reviewed package and paste page, not automated posting."
+   ],
+   "privacy": "Workspaces, source snapshots, drafts, and receipts stay local by default."
   },
   {
    "id": "ai-product-research-library",
