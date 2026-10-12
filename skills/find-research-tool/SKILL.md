@@ -20,6 +20,7 @@ If it is temporarily unavailable, use this fallback:
 | Audit feedback or demand claims; grade evidence; validate an opportunity or willingness to pay | User Demand Research (SURE) | `user-demand-research` |
 | Convert public Bilibili URLs or BV ids to timestamped Markdown, SRT, and JSON | Bilibili Video to Transcript | `bilibili-transcript` |
 | Search and synthesize Roy Tong's published AI product, Agent, embodied-AI, or hardware research | Roy's AI Product Research Library | `research-knowledge-base` |
+| Turn local research projects, pinned GitHub research, or ChatGPT sessions into sourced, versioned website articles with reader packages | Research to Publish | `research-to-publish` |
 
 ## Route the task
 
