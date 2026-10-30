@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/roy-tong/roy-tong/main/schemas/agent-tools.schema.json",
   "schema_version": "1.0",
-  "updated_at": "2026-10-30",
+  "updated_at": "2026-10-31",
   "catalog_url": "https://raw.githubusercontent.com/roy-tong/roy-tong/main/agent-tools.json",
   "purpose": "Route a user task to the smallest suitable Roy Tong research tool without confusing discovery, installation, invocation, and successful output.",
   "router": {
@@ -15,8 +15,12 @@
       "id": "verovo",
       "name": "verovo",
       "brand": "verovo",
-      "summary": "Verify AI service charges and delivery: re-count supported billing exports against public vendor rules, and check whether agent telemetry preserves measurement semantics across retries, operation grouping, and token accounting.",
+      "summary": "Buyer-side AI service charge and delivery verification. Review explicit criteria against local evidence, re-count supported bills and keep charging, business acceptance and missing evidence separate.",
       "match": [
+        "AI delivery acceptance",
+        "AI service renewal review",
+        "交付验收",
+        "续约核验",
         "AI bill verification",
         "SaaS or AI support invoice re-count",
         "agent tool spend audit",
@@ -49,29 +53,35 @@
           "type": "local-cli",
           "name": "verovo",
           "commands": [
+            "review",
             "recount"
           ]
         }
       ],
       "input": [
+        "a scoped buyer task with explicit charge and/or delivery criteria and relative local JSON evidence paths",
         "a supported billing export (CSV) or the bundled synthetic sample",
         "the vendor whose public billing rules apply",
         "or telemetry fixtures (JSONL) and the metric claims to check"
       ],
       "output": [
+        "separate charge/delivery verdicts, criteria, evidence hashes and offline HTML/JSON reports",
         "bill re-count with findings in both directions and rule provenance",
         "amounts labeled as rule-priced findings, not recovered money",
         "per-invariant PASS / FAIL / AMBIGUOUS / UNPROVABLE for measurement checks",
         "coverage disclosure for what the data cannot decide"
       ],
-      "invoke_example": "Use verovo to re-count this AI support billing export against the vendor's public rules, and tell me which findings are supported and which stay unknown.",
+      "invoke_example": "Use verovo to review this buyer task against the supplied charge and delivery criteria. Keep source and rule limitations visible; do not turn failed delivery into a refund claim.",
       "first_success": {
-        "action": "pip install \"git+https://github.com/roy-tong/verovo@v0.9.0#subdirectory=healthcheck\", then run verovo recount --sample.",
-        "success": "The bundled synthetic export prints the vendor rule with its public source, findings in both directions, and the dollar variance, all locally."
+        "action": "Clone https://github.com/roy-tong/verovo, cd verovo, then run python3 healthcheck/verovo review --sample --html buyer-review.html (main preview; not in v0.9.0).",
+        "success": "The synthetic local report keeps a matching charge, a failed buyer delivery criterion and a missing observation separate. It is not customer validation."
       },
       "constraints": [
         "Buyer Ledger is pre-M1: catalogued tools are not live-connected and no real platform bill has been validated yet.",
-        "A finding is evidence for a review decision, not an accepted claim or a refund."
+        "A finding is evidence for a review decision, not an accepted claim or a refund.",
+        "The review command is a main-branch preview after v0.9.0; tagged installs do not include it.",
+        "A human must confirm applicable rules and source truth. No universal contract parsing or automated quality score.",
+        "Providers reviewing upstream spend are buyers; downstream provider work requires a concrete transaction."
       ],
       "privacy": "Re-counts and checks run locally by default; CLI commands do not upload data.",
       "skill": {
