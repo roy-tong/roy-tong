@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/roy-tong/roy-tong/main/schemas/agent-tools.schema.json",
   "schema_version": "1.0",
-  "updated_at": "2026-10-11",
+  "updated_at": "2026-10-30",
   "catalog_url": "https://raw.githubusercontent.com/roy-tong/roy-tong/main/agent-tools.json",
   "purpose": "Route a user task to the smallest suitable Roy Tong research tool without confusing discovery, installation, invocation, and successful output.",
   "router": {
@@ -12,62 +12,72 @@
   },
   "tools": [
     {
-      "id": "agentmeasure",
-      "name": "AgentMeasure",
-      "summary": "Check whether agent telemetry preserves measurement semantics across retries, operation grouping, token accounting, cache behavior, and evidence boundaries.",
+      "id": "verovo",
+      "name": "verovo",
+      "brand": "verovo",
+      "summary": "Verify AI service charges and delivery: re-count supported billing exports against public vendor rules, and check whether agent telemetry preserves measurement semantics across retries, operation grouping, and token accounting.",
       "match": [
+        "AI bill verification",
+        "SaaS or AI support invoice re-count",
+        "agent tool spend audit",
+        "buyer ledger",
+        "AI 服务费用核验",
+        "账单复算",
+        "对账依据",
         "agent observability semantics",
         "telemetry conformance",
         "retry accounting",
         "operation vs attempt",
         "LLM token accounting",
-        "measurement invariants",
-        "agent usage metrics",
         "遥测语义核查",
-        "重试计数",
         "用量口径"
       ],
       "avoid": [
+        "automatic refund claims",
+        "contract dispute representation",
         "load testing",
-        "general APM dashboards",
-        "prompt evaluation frameworks"
+        "general APM dashboards"
       ],
-      "repository": "https://github.com/roy-tong/AgentMeasure",
+      "repository": "https://github.com/roy-tong/verovo",
       "status": "public-beta",
       "surfaces": [
         {
           "type": "agent-skill",
-          "name": "agentmeasure"
+          "name": "verovo"
         },
         {
           "type": "local-cli",
-          "name": "conformance/runners/run_metrics.py"
+          "name": "verovo",
+          "commands": [
+            "recount"
+          ]
         }
       ],
       "input": [
-        "telemetry fixtures (JSONL) or a mapped trace export",
-        "the metric claims to check against the data"
+        "a supported billing export (CSV) or the bundled synthetic sample",
+        "the vendor whose public billing rules apply",
+        "or telemetry fixtures (JSONL) and the metric claims to check"
       ],
       "output": [
-        "per-invariant PASS / FAIL / AMBIGUOUS / UNPROVABLE",
-        "coverage disclosure for what the data cannot decide",
-        "reproducible conformance vectors"
+        "bill re-count with findings in both directions and rule provenance",
+        "amounts labeled as rule-priced findings, not recovered money",
+        "per-invariant PASS / FAIL / AMBIGUOUS / UNPROVABLE for measurement checks",
+        "coverage disclosure for what the data cannot decide"
       ],
-      "invoke_example": "Use AgentMeasure to check whether retry handling inflates counted usage in this trace fixture, and tell me which invariants cannot be decided from this data.",
+      "invoke_example": "Use verovo to re-count this AI support billing export against the vendor's public rules, and tell me which findings are supported and which stay unknown.",
       "first_success": {
-        "action": "Clone the repository, run the two-minute local demo, then run the conformance vectors.",
-        "success": "demo-e2e.sh maps 42 calls to 84 canonical observations deterministically, and run_metrics.py reports 21/21 vectors PASS."
+        "action": "pip install \"git+https://github.com/roy-tong/verovo@v0.9.0#subdirectory=healthcheck\", then run verovo recount --sample.",
+        "success": "The bundled synthetic export prints the vendor rule with its public source, findings in both directions, and the dollar variance, all locally."
       },
       "constraints": [
-        "The packaged conformance CLI is in development; runners currently live in the repository.",
-        "Provider audit entry is email-first with a zero-install sample check."
+        "Buyer Ledger is pre-M1: catalogued tools are not live-connected and no real platform bill has been validated yet.",
+        "A finding is evidence for a review decision, not an accepted claim or a refund."
       ],
-      "privacy": "Fixtures and checks run locally by default; no telemetry leaves the machine.",
-      "brand": "AgentMeasure",
+      "privacy": "Re-counts and checks run locally by default; CLI commands do not upload data.",
       "skill": {
-        "name": "agentmeasure",
-        "preview_command": "gh skill preview roy-tong/AgentMeasure agentmeasure",
-        "install_command": "gh skill install roy-tong/AgentMeasure agentmeasure --agent codex --scope user"
+        "name": "verovo",
+        "preview_command": "gh skill preview roy-tong/verovo verovo",
+        "install_command": "gh skill install roy-tong/verovo verovo --agent codex --scope user"
       }
     },
     {
@@ -133,10 +143,10 @@
       "privacy": "Configuration, credentials, collected articles, and reports remain local by default."
     },
     {
-      "id": "user-demand-research",
-      "name": "User Demand Research (SURE)",
-      "brand": "SURE — Structured User Research with Evidence",
-      "summary": "Turn a research goal, region, sample size, and platform types into an auditable demand-research study: platform feasibility from a reviewed GitHub open-source connector registry, quota planning, deterministic corpus signals, and a research-status report with E0-E5 evidence and counter-evidence gates.",
+      "id": "askovo",
+      "name": "askovo",
+      "brand": "askovo",
+      "summary": "Turn a product question into an evidence-led reasoning chain — 场景 → 用户 → 痛点 → 需求 → 特性 → 产品 — with platform feasibility, quota planning, deterministic corpus signals, E0-E5 evidence grades and counter-evidence gates.",
       "match": [
         "user demand research",
         "customer discovery",
@@ -155,7 +165,10 @@
         "场景研究",
         "调研报告",
         "社媒调研",
-        "电商评论研究"
+        "电商评论研究",
+        "product reasoning",
+        "产品推理",
+        "需求到特性"
       ],
       "avoid": [
         "generic market sizing",
@@ -163,44 +176,32 @@
         "treating feature mentions or likes as demand",
         "scraping platforms that block third-party collection"
       ],
-      "repository": "https://github.com/roy-tong/user-demand-research",
+      "repository": "https://github.com/roy-tong/askovo",
       "status": "public",
       "surfaces": [
         {
           "type": "agent-skill",
-          "name": "user-demand-research"
+          "name": "askovo"
         },
         {
           "type": "local-cli",
-          "name": "sure.py",
+          "name": "askovo",
           "commands": [
-            "plan",
-            "init",
-            "check",
-            "signals",
-            "report",
-            "connectors"
+            "do",
+            "chain",
+            "demo"
           ]
         },
         {
           "type": "mcp-server",
-          "name": "sure-research",
-          "script": "skills/user-demand-research/scripts/sure_mcp.py",
-          "tools": [
-            "sure_plan",
-            "sure_init",
-            "sure_check",
-            "sure_signals",
-            "sure_report",
-            "sure_connectors",
-            "sure_platform_map"
-          ]
+          "name": "askovo-mcp",
+          "script": "skills/askovo/scripts/askovo_mcp.py"
         }
       ],
       "skill": {
-        "name": "user-demand-research",
-        "preview_command": "gh skill preview roy-tong/user-demand-research user-demand-research",
-        "install_command": "gh skill install roy-tong/user-demand-research user-demand-research --agent codex --scope user"
+        "name": "askovo",
+        "preview_command": "gh skill preview roy-tong/askovo askovo",
+        "install_command": "gh skill install roy-tong/askovo askovo --agent codex --scope user"
       },
       "input": [
         "research goal (product, user, or scene)",
@@ -217,10 +218,10 @@
         "demand judgments with counter-evidence and gaps",
         "Chinese research-status report"
       ],
-      "invoke_example": "Use user-demand-research to plan a study: goal 'AI 眼镜在海外社媒的用户不满与替代方案', region overseas, sample size 100000, platform types forum+social+video. Report feasibility and the next gate.",
+      "invoke_example": "Use askovo to plan a study: goal 'AI 眼镜在海外社媒的用户不满与替代方案', region overseas, sample size 100000, platform types forum+social+video. Report feasibility and the next gate.",
       "first_success": {
-        "action": "From a repository checkout, run python3 skills/user-demand-research/scripts/sure.py check examples/sample-study --stage full --write-report.",
-        "success": "The synthetic sample returns status: pass with all three evidence chains verified, offline and dependency-free."
+        "action": "Clone the repository, pipx install --editable ., then run askovo demo.",
+        "success": "The built-in synthetic case returns status: pass, supported: 1, overclaims: 0 — proving the chain and evidence citations run, not that the demand is real."
       },
       "constraints": [
         "Convenience samples do not support population prevalence or market-share claims.",

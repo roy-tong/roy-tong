@@ -16,14 +16,17 @@ SCHEMA_PATH = ROOT / "schemas" / "agent-tools.schema.json"
 README_PATH = ROOT / "README.md"
 ROUTER_PATH = ROOT / "skills" / "find-research-tool" / "SKILL.md"
 EXPECTED_IDS = {
+    "verovo",
+    "askovo",
     "research-monitor",
-    "user-demand-research",
     "bilibili-video-to-transcript",
     "ai-product-research-library",
 }
 OBSOLETE_CANONICAL_NAMES = {
     "sure-user-demand-research",
     "scene-user-demand-research",
+    "agentmeasure",
+    "user-demand-research",
 }
 
 

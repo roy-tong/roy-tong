@@ -1,6 +1,6 @@
 ---
 name: find-research-tool
-description: Route research tasks to Roy Tong's open-source Agent Skills and local-first tools. Use when a user needs continuous research monitoring, source discovery, recurring research digests, evidence-led user-demand or voice-of-customer analysis, willingness-to-pay validation, Bilibili video-to-text or subtitles, Roy Tong's public AI product research, measurement-conformance checks on agent telemetry (retry accounting, operation vs attempt, token double counting), or asks which Roy Tong project, Skill, CLI, or research tool to use. 中文触发：选择研究工具、持续行业监测、信源发现、用户需求研究、评论挖掘、付费意愿、B站视频转文字、检索 Roy Tong 公开研究、遥测语义核查、重试计数、用量口径。
+description: Route research tasks to Roy Tong's open-source Agent Skills and local-first tools. Use when a user needs to re-count an AI or SaaS support bill against public billing rules, audit agent-tool spend, verify AI service charges and delivery, run measurement-conformance checks on agent telemetry (retry accounting, operation vs attempt, token double counting), reason from users to products with graded demand evidence, run continuous research monitoring, source discovery, recurring research digests, voice-of-customer analysis, willingness-to-pay validation, Bilibili video-to-text or subtitles, Roy Tong's public AI product research, or asks which Roy Tong project, Skill, CLI, or research tool to use. 中文触发：选择研究工具、AI 账单复算、费用核验、对账依据、遥测语义核查、重试计数、用量口径、产品推理、用户需求研究、持续行业监测、信源发现、评论挖掘、付费意愿、B站视频转文字、检索 Roy Tong 公开研究。
 ---
 
 # Find a Research Tool
@@ -15,9 +15,9 @@ If it is temporarily unavailable, use this fallback:
 
 | Task | Select | Target Skill |
 | --- | --- | --- |
-| Check whether agent telemetry double counts retries, mixes operation and attempt grains, or double counts token subsets; run measurement-conformance vectors on a fixture | AgentMeasure | `agentmeasure` |
+| Re-count an AI or SaaS support bill against public billing rules; audit agent-tool spend; check whether agent telemetry double counts retries, mixes operation and attempt grains, or double counts token subsets | verovo | `verovo` |
 | Monitor a field repeatedly; discover and review sources; produce recurring digests | iRead Research Monitor | `iread` |
-| Audit feedback or demand claims; grade evidence; validate an opportunity or willingness to pay | User Demand Research (SURE) | `user-demand-research` |
+| Reason from users to products (场景→用户→痛点→需求→特性→产品); audit feedback or demand claims; grade evidence; validate an opportunity or willingness to pay | askovo | `askovo` |
 | Convert public Bilibili URLs or BV ids to timestamped Markdown, SRT, and JSON | Bilibili Video to Transcript | `bilibili-transcript` |
 | Search and synthesize Roy Tong's published AI product, Agent, embodied-AI, or hardware research | Roy's AI Product Research Library | `research-knowledge-base` |
 | Turn local research projects, pinned GitHub research, or ChatGPT sessions into sourced, versioned website articles with reader packages | Research to Publish | `research-to-publish` |

@@ -1,47 +1,42 @@
 # Roy Tong
 
-**Building [AgentMeasure](https://github.com/roy-tong/AgentMeasure) — check whether your agent metrics mean what their labels claim.**
+**Building the ovo series — [verovo](https://github.com/roy-tong/verovo) and [askovo](https://github.com/roy-tong/askovo). AI made generation cheap; verification became the product.**
 
-[Run the checks](https://github.com/roy-tong/AgentMeasure/tree/main/conformance/pack) · [Project website](https://roy-tong.github.io/AgentMeasure/) · [中文说明](https://github.com/roy-tong/AgentMeasure/blob/main/README.zh-CN.md) · [My blog](https://roy-tong.github.io/)
+Every ovo tool is a second pair of eyes for one decision: type the claim, grade the evidence (E0–E5), gate on what the data can actually prove, and record what remains unknown.
 
-## One task. Two attempts. What do you count?
-
-One declared operation has a failed attempt, then a successful retry:
-
-| Measurement | Result |
+| Product | What it verifies |
 | --- | --- |
-| Logical operations | 1 |
-| Execution attempts | 2 |
-| Operation success | 1 / 1 = 100% |
-| Attempt success | 1 / 2 = 50% |
+| **[verovo](https://github.com/roy-tong/verovo)** | **AI service charges and delivery.** A local CLI re-counts supported bills against public billing rules; the Buyer Ledger catalogues 26 agent-tool billing models. [Website](https://roy-tong.github.io/verovo/) · [中文](https://github.com/roy-tong/verovo/blob/main/README.zh-CN.md) |
+| **[askovo](https://github.com/roy-tong/askovo)** | **Product reasoning.** 场景 → 用户 → 痛点 → 需求 → 特性 → 产品 — evidence-led demand research for PMs, user researchers and user ops (Skill + CLI + MCP). |
 
-Both success rates describe the same execution, at different grains. If a trace cannot establish the grouping or outcome, the result is **UNPROVABLE**.
+## Try either in one minute
 
-AgentMeasure turns these distinctions into local checks and CI results: **PASS / FAIL / UNPROVABLE**. It is useful for agent-framework maintainers, MCP/API providers, and teams comparing agent evaluations.
+**verovo — re-count a support bill** (synthetic export, real command, runs locally):
+
+```bash
+pip install "git+https://github.com/roy-tong/verovo@v0.9.0#subdirectory=healthcheck"
+verovo recount --sample
+```
+
+The output prints the vendor's rule with its public source, findings in both directions, then the dollars — and states plainly which amounts are rule-priced findings, not recovered money.
+
+**askovo — run the product-reasoning chain** (built-in synthetic case):
+
+```bash
+git clone https://github.com/roy-tong/askovo.git && cd askovo
+pipx install --editable .
+askovo demo
+```
 
 ## Evidence you can inspect
 
-- **Merged upstream:** my [OpenLIT token-accounting fix](https://github.com/openlit/openlit/pull/1476) prevents reasoning tokens from being added to an output total that already includes them.
-- **Independent test cases:** [Urusilla’s external conformance vectors](https://github.com/roy-tong/AgentMeasure/tree/main/conformance/vectors/external) exposed measurement defects, including [an operation-grain metric aggregated at assignment grain](https://github.com/roy-tong/AgentMeasure/issues/12). The report records the fix and regression fixture.
-- **Explicit limits:** the [Conformance Pack](https://github.com/roy-tong/AgentMeasure/tree/main/conformance/pack) checks execution grain, retry reconciliation, cost preservation, operation grain, and evidence boundaries. Token and cache checks are **not yet supported** by the pack; the OpenLIT fix is a separate upstream contribution.
+- **verovo**: 106 tests pass on synthetic data and CI compares frozen showcase outputs; **no real platform bill has been validated yet**. CLI 0.9.0 is tagged on GitHub; the PyPI publish is pending. My [OpenLIT token-accounting fix](https://github.com/openlit/openlit/pull/1476) (merged upstream) stops reasoning tokens from being added to an output total that already includes them.
+- **askovo**: `askovo demo` reports `status: pass`, `overclaims: 0` — that proves the reasoning chain, evidence citations and gates hold together, **not** that any demand, market size or launch is real.
+- The [external conformance vectors](https://github.com/roy-tong/verovo/tree/main/conformance/vectors/external) that shaped verovo's measurement checks are public, with defects, fixes and regression fixtures recorded.
 
-## Try it locally
+## The question behind the series
 
-With Git and Python 3 installed, run the included fixtures:
-
-```bash
-git clone https://github.com/roy-tong/AgentMeasure.git
-cd AgentMeasure
-python3 conformance/pack/agentmeasure selftest
-```
-
-This checks the repository’s fixtures. To check your own measurements, [prepare an FMT-002 fixture and optionally provide metric claims](https://github.com/roy-tong/AgentMeasure/tree/main/conformance/pack#input-contract). Raw data stays local unless you choose to share it.
-
-**Help make the checks better:** [contribute a counterexample or discuss a measurement](https://github.com/roy-tong/AgentMeasure/discussions). Start with a synthetic or public fixture and the number you expected. If the project is useful, [star or share AgentMeasure](https://github.com/roy-tong/AgentMeasure).
-
-## The question behind the project
-
-When agents become software consumers, what counts as one use, one completed task, or one useful outcome? I am building AgentMeasure to make those units inspectable.
+When software's consumers become agents and producers become AI, what counts as one use, one completed task, one verified outcome? The ovo series makes those units inspectable — for buyers re-counting a bill, and for product teams reasoning from users to features.
 
 [Read the essay](https://roy-tong.github.io/en/notes/when-the-software-consumer-becomes-an-agent/) · [中文：当软件的消费者变成 Agent](https://roy-tong.github.io/notes/when-the-software-consumer-becomes-an-agent/)
 
@@ -51,9 +46,9 @@ When agents become software consumers, what counts as one use, one completed tas
 | Tool | What it does |
 | --- | --- |
 | [iRead Research Monitor](https://github.com/roy-tong/iRead) | Ongoing source discovery and evidence-aware research digests |
-| [User Demand Research (SURE)](https://github.com/roy-tong/user-demand-research) | Auditable demand evidence and research reports (Skill + CLI + MCP) |
 | [Bilibili Video to Transcript](https://github.com/roy-tong/bilibili-transcript-pipeline) | Public videos to timestamped, searchable research text |
 | [Research to Publish](https://github.com/roy-tong/research-to-publish) | Sourced, versioned research articles with WeChat and Xiaohongshu delivery packages and publication receipts |
+| [agent-tool-center](https://github.com/roy-tong/agent-tool-center) | First-party skills and pipelines behind my research, content and ops lines |
 | [Roy's AI Product Research Library](https://github.com/roy-tong/roy-tong.github.io) | Public research, essays, and a read-only agent index |
 
 Machine-readable catalog: https://raw.githubusercontent.com/roy-tong/roy-tong/main/agent-tools.json
@@ -63,7 +58,7 @@ gh skill preview roy-tong/roy-tong find-research-tool
 gh skill install roy-tong/roy-tong find-research-tool --agent codex --scope user
 ```
 
-The router helps select a tool; it does not perform the selected tool’s work.
+The router helps select a tool; it does not perform the selected tool's work.
 
 </details>
 
