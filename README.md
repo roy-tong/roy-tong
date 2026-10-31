@@ -2,13 +2,13 @@
 
 **Building the ovo series — [Verovo](https://github.com/roy-tong/verovo), [Askovo](https://github.com/roy-tong/askovo) and [Growovo](https://github.com/roy-tong/Growovo). AI made generation cheap; verification became the product.**
 
-Each tool makes a specific decision inspectable: **Askovo** — what to build; **Verovo** — whether the charges and delivery hold up; **Growovo** — where the users come from. All three type the claim, grade the evidence (E0–E5), gate on what the data can prove, and keep unresolved questions visible.
+Three independent products cover a practical business workflow: **Askovo researches and validates**, **Growovo executes recurring operations**, and **Verovo connects costs with verified business outcomes**. Each preserves its own evidence and acceptance rules.
 
-| Product | What it verifies |
-| --- | --- |
-| **[Verovo](https://github.com/roy-tong/verovo)** | **AI service charges and delivery, from the buyer’s side.** Independent charge and delivery reviews support reconciliation, acceptance, remediation and renewal. Local tools compare explicit criteria with evidence and re-count supported bills. [Website](https://roy-tong.github.io/verovo/) · [中文](https://github.com/roy-tong/verovo/blob/main/README.zh-CN.md) |
-| **[Askovo](https://github.com/roy-tong/askovo)** | **Product and business reasoning.** 场景 → 用户 → 痛点 → 需求 → 特性 → 产品 → 商业， for PMs, user researchers, user ops and market/demand/business analysts (Skill + CLI + MCP). `askovo audit` flags conclusions that exceed their evidence — exit code 1, so it can gate CI. |
-| **[Growovo](https://github.com/roy-tong/Growovo)** | **Growth, with evidence at every step.** 定 → 造 → 跑： an agent-native GTM operator that takes a shipped product toward verifiable real-user growth. The `mkt` kernel (CLI / MCP / Skill) is live across X, Email, Reddit, LinkedIn, GitHub and HN; every command carries a PROVEN / PORTED / UNVERIFIED label. |
+| Product | What you get |
+|---|---|
+| **[Askovo](https://github.com/roy-tong/Askovo)** | Authorized data collection, descriptive analysis and evidence audits leading to research reports, MRD, PRD or BRD. Plans come from your Agent; source and validation gaps stay visible. |
+| **[Growovo](https://github.com/roy-tong/Growovo)** | Reviewed queues and playbooks for community, content and communication tasks. Shared approval, quotas, readback and ledgers make recurring work inspectable. Sent operations are separate from business conversions. |
+| **[Verovo](https://github.com/roy-tong/Verovo)** | AI charge/delivery review and task economics: direct/shared cost, cost per verified success and evidence-backed ROI from explicit local records. [Website](https://roy-tong.github.io/Verovo/) · [中文](https://github.com/roy-tong/Verovo/blob/main/README.zh-CN.md) |
 
 ## Try them in one minute
 
@@ -22,7 +22,7 @@ python3 healthcheck/verovo review --sample --html buyer-review.html
 
 The report keeps matching charges, an unmet delivery requirement and a missing
 observation separate. Rule applicability and source truth still require human
-review. [Inspect the synthetic report](https://roy-tong.github.io/verovo/examples/buyer-review.html)
+review. [Inspect the synthetic report](https://roy-tong.github.io/Verovo/examples/buyer-review.html)
 · [Prepare your own task](https://github.com/roy-tong/verovo/blob/main/docs/buyer-review.md).
 The new command is not included in the v0.9.0 tag.
 

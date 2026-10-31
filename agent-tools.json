@@ -15,7 +15,7 @@
       "id": "verovo",
       "name": "Verovo",
       "brand": "Verovo",
-      "summary": "Buyer-side AI service charge and delivery verification. Review explicit criteria against local evidence, re-count supported bills and keep charging, business acceptance and missing evidence separate.",
+      "summary": "Connect buyer logs, supplier charges, financial records and business outcomes. Review charges and delivery, allocate task costs and calculate cost per verified success and evidence-backed ROI. Automatic invoice extraction and insurance remain future work.",
       "match": [
         "AI delivery acceptance",
         "AI service renewal review",
@@ -34,7 +34,11 @@
         "operation vs attempt",
         "LLM token accounting",
         "遥测语义核查",
-        "用量口径"
+        "用量口径",
+        "task economics",
+        "cost per successful task",
+        "单任务成本",
+        "业务 ROI"
       ],
       "avoid": [
         "automatic refund claims",
@@ -54,7 +58,8 @@
           "name": "verovo",
           "commands": [
             "review",
-            "recount"
+            "recount",
+            "economics"
           ]
         }
       ],
@@ -156,7 +161,7 @@
       "id": "askovo",
       "name": "Askovo",
       "brand": "Askovo",
-      "summary": "Turn a product question into an evidence-led reasoning chain — 场景 → 用户 → 痛点 → 需求 → 特性 → 产品 → 商业 — with platform feasibility, quota planning, E0–E5 evidence grades, counter-evidence gates, and an audit that fails (exit code 1) when a conclusion exceeds its evidence.",
+      "summary": "Turn business questions and authorized sources into traceable research deliverables. Agent-authored plans drive collection, descriptive analysis and evidence audits; unsupported sources and unverified claims stay visible.",
       "match": [
         "user demand research",
         "customer discovery",
@@ -182,7 +187,9 @@
         "product and business reasoning",
         "overclaim audit",
         "产品与商业推理",
-        "结论超证审计"
+        "结论超证审计",
+        "authorized research collection",
+        "business hypothesis validation"
       ],
       "avoid": [
         "generic market sizing",
@@ -250,7 +257,7 @@
       "id": "growovo",
       "name": "Growovo",
       "brand": "Growovo",
-      "summary": "Agent-native GTM operator: 定 → 造 → 跑 — take a shipped product toward verifiable real-user growth (registration, activation, payment), with evidence grades at every step. The mkt kernel (CLI/MCP/Skill) is live; GTM layers are early.",
+      "summary": "Run recurring community, content and communication tasks through reviewed queues and authorized accounts. The operator kernel and business playbooks share dry-run, approval, quotas and execution records; unknown outcomes require review.",
       "match": [
         "go-to-market",
         "growth operations",
@@ -262,7 +269,10 @@
         "增长运营",
         "GTM",
         "获客",
-        "渠道执行"
+        "渠道执行",
+        "recurring operations",
+        "community inbox",
+        "重复运营任务"
       ],
       "avoid": [
         "mass DMs or spam",
@@ -275,7 +285,7 @@
       "surfaces": [
         {
           "type": "agent-skill",
-          "name": "marketing-ops"
+          "name": "growovo-gtm"
         },
         {
           "type": "local-cli",
@@ -287,7 +297,7 @@
         }
       ],
       "input": [
-        "a shipped product entry (repository or landing page)",
+        "an operations goal, authorized account and reviewed task queue",
         "ICP and positioning hypotheses",
         "a channel list, or a human-approved campaign plan (data/plans/*.json)"
       ],
@@ -308,9 +318,9 @@
       ],
       "privacy": "Zero-credential CDP: no passwords, tokens or cookies are stored; SMTP credentials only via environment variables; ledger entries and screenshots stay local.",
       "skill": {
-        "name": "marketing-ops",
-        "preview_command": "gh skill preview roy-tong/Growovo marketing-ops",
-        "install_command": "gh skill install roy-tong/Growovo marketing-ops --agent codex --scope user"
+        "name": "growovo-gtm",
+        "preview_command": "gh skill preview roy-tong/Growovo growovo-gtm",
+        "install_command": "gh skill install roy-tong/Growovo growovo-gtm --agent codex --scope user"
       }
     },
     {
