@@ -18,6 +18,7 @@ ROUTER_PATH = ROOT / "skills" / "find-research-tool" / "SKILL.md"
 EXPECTED_IDS = {
     "verovo",
     "askovo",
+    "growovo",
     "research-monitor",
     "bilibili-video-to-transcript",
     "ai-product-research-library",
@@ -27,6 +28,7 @@ OBSOLETE_CANONICAL_NAMES = {
     "scene-user-demand-research",
     "agentmeasure",
     "user-demand-research",
+    "marketing-ops-automation",
 }
 
 

@@ -1,6 +1,6 @@
 # Agent navigation
 
-This repository is the public catalog for Roy Tong's research tools. It is not the implementation repository for verovo, askovo, iRead, Bilibili Video to Transcript, or the public research library.
+This repository is the public catalog for Roy Tong's tools. It is not the implementation repository for verovo, askovo, Growovo, iRead, Bilibili Video to Transcript, or the public research library.
 
 - Treat `agent-tools.json` as the canonical machine-readable catalog and `README.md` as its human-facing projection.
 - Use `skills/find-research-tool/SKILL.md` only to route a task. Do not claim that the router performs a target tool's work.

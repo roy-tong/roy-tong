@@ -3,7 +3,7 @@
   "schema_version": "1.0",
   "updated_at": "2026-10-31",
   "catalog_url": "https://raw.githubusercontent.com/roy-tong/roy-tong/main/agent-tools.json",
-  "purpose": "Route a user task to the smallest suitable Roy Tong research tool without confusing discovery, installation, invocation, and successful output.",
+  "purpose": "Route a user task to the smallest suitable Roy Tong tool (research, verification, or growth) without confusing discovery, installation, invocation, and successful output.",
   "router": {
     "skill": "find-research-tool",
     "preview_command": "gh skill preview roy-tong/roy-tong find-research-tool",
@@ -156,7 +156,7 @@
       "id": "askovo",
       "name": "askovo",
       "brand": "askovo",
-      "summary": "Turn a product question into an evidence-led reasoning chain — 场景 → 用户 → 痛点 → 需求 → 特性 → 产品 — with platform feasibility, quota planning, deterministic corpus signals, E0-E5 evidence grades and counter-evidence gates.",
+      "summary": "Turn a product question into an evidence-led reasoning chain — 场景 → 用户 → 痛点 → 需求 → 特性 → 产品 → 商业 — with platform feasibility, quota planning, E0–E5 evidence grades, counter-evidence gates, and an audit that fails (exit code 1) when a conclusion exceeds its evidence.",
       "match": [
         "user demand research",
         "customer discovery",
@@ -178,7 +178,11 @@
         "电商评论研究",
         "product reasoning",
         "产品推理",
-        "需求到特性"
+        "需求到特性",
+        "product and business reasoning",
+        "overclaim audit",
+        "产品与商业推理",
+        "结论超证审计"
       ],
       "avoid": [
         "generic market sizing",
@@ -199,7 +203,8 @@
           "commands": [
             "do",
             "chain",
-            "demo"
+            "demo",
+            "audit"
           ]
         },
         {
@@ -226,7 +231,8 @@
         "evidence records with E0-E5 grades and provenance",
         "deterministic corpus signals",
         "demand judgments with counter-evidence and gaps",
-        "Chinese research-status report"
+        "Chinese research-status report",
+        "audit exit code 1 with the overclaiming conclusions named"
       ],
       "invoke_example": "Use askovo to plan a study: goal 'AI 眼镜在海外社媒的用户不满与替代方案', region overseas, sample size 100000, platform types forum+social+video. Report feasibility and the next gate.",
       "first_success": {
@@ -239,6 +245,73 @@
         "Reddit access requires an approved Data API app registered by 2026-09-30."
       ],
       "privacy": "The Skill does not require uploading research questions, source records, identities, or local paths to the maintainer."
+    },
+    {
+      "id": "growovo",
+      "name": "Growovo",
+      "brand": "Growovo",
+      "summary": "Agent-native GTM operator: 定 → 造 → 跑 — take a shipped product toward verifiable real-user growth (registration, activation, payment), with evidence grades at every step. The mkt kernel (CLI/MCP/Skill) is live; GTM layers are early.",
+      "match": [
+        "go-to-market",
+        "growth operations",
+        "user acquisition",
+        "launch planning",
+        "Show HN",
+        "GitHub project operations",
+        "marketing automation",
+        "增长运营",
+        "GTM",
+        "获客",
+        "渠道执行"
+      ],
+      "avoid": [
+        "mass DMs or spam",
+        "automating accounts you do not own",
+        "buying followers or fake engagement",
+        "bypassing anti-bot protections"
+      ],
+      "repository": "https://github.com/roy-tong/Growovo",
+      "status": "public-beta",
+      "surfaces": [
+        {
+          "type": "agent-skill",
+          "name": "marketing-ops"
+        },
+        {
+          "type": "local-cli",
+          "name": "mkt.py"
+        },
+        {
+          "type": "mcp-server",
+          "name": "mcp_server.py"
+        }
+      ],
+      "input": [
+        "a shipped product entry (repository or landing page)",
+        "ICP and positioning hypotheses",
+        "a channel list, or a human-approved campaign plan (data/plans/*.json)"
+      ],
+      "output": [
+        "repository audits, zero-response issue sweeps and reply drafts",
+        "campaign executions with ledger entries and read-back verification screenshots",
+        "evidence-graded growth artifacts with PROVEN / PORTED / UNVERIFIED labels"
+      ],
+      "invoke_example": "Use Growovo to audit owner/repo health and zero-response issues, then draft a human-approved reply plan. Do not run write operations without --go.",
+      "first_success": {
+        "action": "Clone the repository, pip install -r requirements.txt, then run python3 mkt.py github audit --repo roy-tong/verovo (read-only, PROVEN).",
+        "success": "The audit prints health findings without writing anything; every write command stays dry-run until --go."
+      },
+      "constraints": [
+        "Only accounts you own or operate; no third-party account automation.",
+        "All write operations default to dry-run and require a human-approved plan; the kernel refuses unapproved campaigns.",
+        "Commands carry verification levels: PROVEN, PORTED, UNVERIFIED — first runs of UNVERIFIED commands need human supervision."
+      ],
+      "privacy": "Zero-credential CDP: no passwords, tokens or cookies are stored; SMTP credentials only via environment variables; ledger entries and screenshots stay local.",
+      "skill": {
+        "name": "marketing-ops",
+        "preview_command": "gh skill preview roy-tong/Growovo marketing-ops",
+        "install_command": "gh skill install roy-tong/Growovo marketing-ops --agent codex --scope user"
+      }
     },
     {
       "id": "bilibili-video-to-transcript",
