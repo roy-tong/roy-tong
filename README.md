@@ -6,9 +6,11 @@ Three independent products cover a practical business workflow: **Askovo researc
 
 | Product | What you get |
 |---|---|
-| **[Askovo](https://github.com/roy-tong/Askovo)** | Authorized data collection, descriptive analysis and evidence audits leading to research reports, MRD, PRD or BRD. Plans come from your Agent; source and validation gaps stay visible. |
-| **[Growovo](https://github.com/roy-tong/Growovo)** | Reviewed queues and playbooks for community, content and communication tasks. Shared approval, quotas, readback and ledgers make recurring work inspectable. Sent operations are separate from business conversions. |
-| **[Verovo](https://github.com/roy-tong/Verovo)** | AI charge/delivery review and task economics: direct/shared cost, cost per verified success and evidence-backed ROI from explicit local records. [Website](https://roy-tong.github.io/Verovo/) · [中文](https://github.com/roy-tong/Verovo/blob/main/README.zh-CN.md) |
+| **[Askovo](https://github.com/roy-tong/Askovo)** | Give it a business question and authorized sources; it plans and performs bounded research, analyzes evidence, checks claims, and delivers traceable decisions. Optional local PDF/Office intake via Docling produces unreviewed, source-hashed text. |
+| **[Growovo](https://github.com/roy-tong/Growovo)** | Let an Agent carry out recurring community and content operations on authorized accounts. Actions are reviewed, rate-limited, verified and logged; a new privacy-safe operations memory summarizes receipts without replaying them. |
+| **[Verovo](https://github.com/roy-tong/Verovo)** | Reconcile AI supplier charges with tasks and business outcomes; calculate verified-success cost and evidence-backed ROI. Optional invoice2data intake extracts an unreviewed invoice draft, never a booked cost. [Website](https://roy-tong.github.io/Verovo/) · [中文](https://github.com/roy-tong/Verovo/blob/main/README.zh-CN.md) |
+
+Each project is independently useful through **CLI, Agent Skill and/or MCP**, and all three are open-source. Optional document/invoice parsers are adapters, not bundled forks. Extraction and platform receipts are not automatically proof of verified research, customer conversion, or booked financial value.
 
 ## Try them in one minute
 
