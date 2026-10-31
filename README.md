@@ -1,13 +1,5 @@
 # Roy Tong
 
-<p align="center">
-  <a href="https://github.com/roy-tong/verovo"><img src="assets/verovo-logo.png" alt="Verovo" height="52"></a>
-  &nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/roy-tong/askovo"><img src="assets/askovo-logo.png" alt="Askovo" height="52"></a>
-  &nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/roy-tong/Growovo"><img src="assets/growovo-logo.png" alt="Growovo" height="52"></a>
-</p>
-
 **Building the ovo series — [Verovo](https://github.com/roy-tong/verovo), [Askovo](https://github.com/roy-tong/askovo) and [Growovo](https://github.com/roy-tong/Growovo). AI made generation cheap; verification became the product.**
 
 Each tool makes a specific decision inspectable: **Askovo** — what to build; **Verovo** — whether the charges and delivery hold up; **Growovo** — where the users come from. All three type the claim, grade the evidence (E0–E5), gate on what the data can prove, and keep unresolved questions visible.
