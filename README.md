@@ -1,18 +1,26 @@
 # Roy Tong
 
-**Building the ovo series — [verovo](https://github.com/roy-tong/verovo), [askovo](https://github.com/roy-tong/askovo) and [Growovo](https://github.com/roy-tong/Growovo). AI made generation cheap; verification became the product.**
+<p align="center">
+  <a href="https://github.com/roy-tong/verovo"><img src="assets/verovo-logo.png" alt="Verovo" height="52"></a>
+  &nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/roy-tong/askovo"><img src="assets/askovo-logo.png" alt="Askovo" height="52"></a>
+  &nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/roy-tong/Growovo"><img src="assets/growovo-logo.png" alt="Growovo" height="52"></a>
+</p>
 
-Each tool makes a specific decision inspectable: **askovo** — what to build; **verovo** — whether the charges and delivery hold up; **Growovo** — where the users come from. All three type the claim, grade the evidence (E0–E5), gate on what the data can prove, and keep unresolved questions visible.
+**Building the ovo series — [Verovo](https://github.com/roy-tong/verovo), [Askovo](https://github.com/roy-tong/askovo) and [Growovo](https://github.com/roy-tong/Growovo). AI made generation cheap; verification became the product.**
+
+Each tool makes a specific decision inspectable: **Askovo** — what to build; **Verovo** — whether the charges and delivery hold up; **Growovo** — where the users come from. All three type the claim, grade the evidence (E0–E5), gate on what the data can prove, and keep unresolved questions visible.
 
 | Product | What it verifies |
 | --- | --- |
-| **[verovo](https://github.com/roy-tong/verovo)** | **AI service charges and delivery, from the buyer’s side.** Independent charge and delivery reviews support reconciliation, acceptance, remediation and renewal. Local tools compare explicit criteria with evidence and re-count supported bills. [Website](https://roy-tong.github.io/verovo/) · [中文](https://github.com/roy-tong/verovo/blob/main/README.zh-CN.md) |
-| **[askovo](https://github.com/roy-tong/askovo)** | **Product and business reasoning.** 场景 → 用户 → 痛点 → 需求 → 特性 → 产品 → 商业， for PMs, user researchers, user ops and market/demand/business analysts (Skill + CLI + MCP). `askovo audit` flags conclusions that exceed their evidence — exit code 1, so it can gate CI. |
+| **[Verovo](https://github.com/roy-tong/verovo)** | **AI service charges and delivery, from the buyer’s side.** Independent charge and delivery reviews support reconciliation, acceptance, remediation and renewal. Local tools compare explicit criteria with evidence and re-count supported bills. [Website](https://roy-tong.github.io/verovo/) · [中文](https://github.com/roy-tong/verovo/blob/main/README.zh-CN.md) |
+| **[Askovo](https://github.com/roy-tong/askovo)** | **Product and business reasoning.** 场景 → 用户 → 痛点 → 需求 → 特性 → 产品 → 商业， for PMs, user researchers, user ops and market/demand/business analysts (Skill + CLI + MCP). `askovo audit` flags conclusions that exceed their evidence — exit code 1, so it can gate CI. |
 | **[Growovo](https://github.com/roy-tong/Growovo)** | **Growth, with evidence at every step.** 定 → 造 → 跑： an agent-native GTM operator that takes a shipped product toward verifiable real-user growth. The `mkt` kernel (CLI / MCP / Skill) is live across X, Email, Reddit, LinkedIn, GitHub and HN; every command carries a PROVEN / PORTED / UNVERIFIED label. |
 
-## Try either in one minute
+## Try them in one minute
 
-**verovo — review charges and delivery** (main-branch preview; synthetic local task):
+**Verovo — review charges and delivery** (main-branch preview; synthetic local task):
 
 ```bash
 git clone https://github.com/roy-tong/verovo.git
@@ -26,7 +34,7 @@ review. [Inspect the synthetic report](https://roy-tong.github.io/verovo/example
 · [Prepare your own task](https://github.com/roy-tong/verovo/blob/main/docs/buyer-review.md).
 The new command is not included in the v0.9.0 tag.
 
-**askovo — run the product-reasoning chain** (built-in synthetic case):
+**Askovo — run the product-reasoning chain** (built-in synthetic case):
 
 ```bash
 pipx install git+https://github.com/roy-tong/askovo.git
@@ -37,8 +45,8 @@ askovo demo
 
 ## Evidence you can inspect
 
-- **verovo**: local tests and synthetic reports verify engineering behavior, not customer demand. Buyer Ledger's 26 catalog entries are not live integrations; real customer-bill validation remains pending. The current GitHub release is CLI v0.9.0; the new buyer review runs from main, and PyPI publication remains pending (2026-10-31). My [OpenLIT token-accounting fix](https://github.com/openlit/openlit/pull/1476) (merged upstream) stops reasoning tokens from being added to an output total that already includes them.
-- **askovo**: `askovo demo` reports `status: pass`, `overclaims: 0` — that proves the reasoning chain, evidence citations and gates hold together, **not** that any demand, market size or launch is real. The chain now extends to business conclusions, and `askovo audit` exits 1 when a conclusion exceeds its evidence.
+- **Verovo**: local tests and synthetic reports verify engineering behavior, not customer demand. Buyer Ledger's 26 catalog entries are not live integrations; real customer-bill validation remains pending. The current GitHub release is CLI v0.9.0; the new buyer review runs from main, and PyPI publication remains pending (2026-10-31). My [OpenLIT token-accounting fix](https://github.com/openlit/openlit/pull/1476) (merged upstream) stops reasoning tokens from being added to an output total that already includes them.
+- **Askovo**: `askovo demo` reports `status: pass`, `overclaims: 0` — that proves the reasoning chain, evidence citations and gates hold together, **not** that any demand, market size or launch is real. The chain now extends to business conclusions, and `askovo audit` exits 1 when a conclusion exceeds its evidence.
 - **Growovo**: every command carries a verification level — PROVEN, PORTED or UNVERIFIED. The kernel refuses campaigns without human approval, only operates accounts its user owns, and stores no credentials.
 - The [external conformance vectors](https://github.com/roy-tong/verovo/tree/main/conformance/vectors/external) that shaped verovo's measurement checks are public, with defects, fixes and regression fixtures recorded.
 

@@ -13,8 +13,8 @@
   "tools": [
     {
       "id": "verovo",
-      "name": "verovo",
-      "brand": "verovo",
+      "name": "Verovo",
+      "brand": "Verovo",
       "summary": "Buyer-side AI service charge and delivery verification. Review explicit criteria against local evidence, re-count supported bills and keep charging, business acceptance and missing evidence separate.",
       "match": [
         "AI delivery acceptance",
@@ -154,8 +154,8 @@
     },
     {
       "id": "askovo",
-      "name": "askovo",
-      "brand": "askovo",
+      "name": "Askovo",
+      "brand": "Askovo",
       "summary": "Turn a product question into an evidence-led reasoning chain — 场景 → 用户 → 痛点 → 需求 → 特性 → 产品 → 商业 — with platform feasibility, quota planning, E0–E5 evidence grades, counter-evidence gates, and an audit that fails (exit code 1) when a conclusion exceeds its evidence.",
       "match": [
         "user demand research",
