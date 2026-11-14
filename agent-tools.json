@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/roy-tong/roy-tong/main/schemas/agent-tools.schema.json",
   "schema_version": "1.0",
-  "updated_at": "2026-10-31",
+  "updated_at": "2026-11-14",
   "catalog_url": "https://raw.githubusercontent.com/roy-tong/roy-tong/main/agent-tools.json",
   "purpose": "Route a user task to the smallest suitable Roy Tong tool (research, verification, or growth) without confusing discovery, installation, invocation, and successful output.",
   "router": {
@@ -78,7 +78,7 @@
       ],
       "invoke_example": "Use verovo to review this buyer task against the supplied charge and delivery criteria. Keep source and rule limitations visible; do not turn failed delivery into a refund claim.",
       "first_success": {
-        "action": "Clone https://github.com/roy-tong/verovo, cd verovo, then run python3 healthcheck/verovo review --sample --html buyer-review.html (main preview; not in v0.9.0).",
+        "action": "pipx install verovo (PyPI 0.13.0), then run verovo review --sample --html buyer-review.html.",
         "success": "The synthetic local report keeps a matching charge, a failed buyer delivery criterion and a missing observation separate. It is not customer validation."
       },
       "constraints": [
@@ -243,7 +243,7 @@
       ],
       "invoke_example": "Use askovo to plan a study: goal 'AI 眼镜在海外社媒的用户不满与替代方案', region overseas, sample size 100000, platform types forum+social+video. Report feasibility and the next gate.",
       "first_success": {
-        "action": "Clone the repository, pipx install --editable ., then run askovo demo.",
+        "action": "pipx install askovo (PyPI), then run askovo demo.",
         "success": "The built-in synthetic case returns status: pass, supported: 1, overclaims: 0 — proving the chain and evidence citations run, not that the demand is real."
       },
       "constraints": [
@@ -294,6 +294,10 @@
         {
           "type": "mcp-server",
           "name": "mcp_server.py"
+        },
+        {
+          "type": "web-index",
+          "name": "https://roy-tong.github.io/Growovo/"
         }
       ],
       "input": [
