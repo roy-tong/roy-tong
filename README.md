@@ -1,18 +1,24 @@
 # Roy Tong
 
-**Building the ovo series — [Verovo](https://github.com/roy-tong/verovo), [Askovo](https://github.com/roy-tong/askovo) and [Growovo](https://github.com/roy-tong/Growovo). AI made generation cheap; verification became the product.**
+<p align="center"><img src="assets/banner.svg" alt="Roy Tong — verification became the product" width="100%"></p>
 
-Three independent products cover a practical business workflow: **Askovo researches and validates**, **Growovo executes recurring operations**, and **Verovo connects costs with verified business outcomes**. Each preserves its own evidence and acceptance rules.
+**Building the ovo series — [Verovo](https://github.com/roy-tong/verovo), [Askovo](https://github.com/roy-tong/askovo), [Growovo](https://github.com/roy-tong/Growovo). AI made generation cheap; verification became the product.**
+
+[![Verovo on PyPI](https://img.shields.io/pypi/v/verovo?label=verovo)](https://pypi.org/project/verovo/)
+[![Askovo on PyPI](https://img.shields.io/pypi/v/askovo?label=askovo)](https://pypi.org/project/askovo/)
+[![Verovo stars](https://img.shields.io/github/stars/roy-tong/Verovo?style=social)](https://github.com/roy-tong/verovo/stargazers)
+
+Three products, one business workflow: **Askovo researches and validates → Growovo executes recurring operations → Verovo reconciles costs with verified outcomes.** Each is independently useful as **CLI, Agent Skill and/or MCP**, keeps its own evidence and acceptance rules, and is open source.
 
 | Product | What you get |
 |---|---|
-| **[Askovo](https://github.com/roy-tong/Askovo)** | Give it a business question and authorized sources; it plans and performs bounded research, analyzes evidence, checks claims, and delivers traceable decisions. Optional local PDF/Office intake via Docling produces unreviewed, source-hashed text. |
-| **[Growovo](https://github.com/roy-tong/Growovo)** | Let an Agent carry out recurring community and content operations on authorized accounts. Actions are reviewed, rate-limited, verified and logged; a new privacy-safe operations memory summarizes receipts without replaying them. [Website](https://roy-tong.github.io/Growovo/) |
-| **[Verovo](https://github.com/roy-tong/Verovo)** | Reconcile AI supplier charges with tasks and business outcomes; calculate verified-success cost and evidence-backed ROI. Optional invoice2data intake extracts an unreviewed invoice draft, never a booked cost. [Website](https://roy-tong.github.io/Verovo/) · [中文](https://github.com/roy-tong/Verovo/blob/main/README.zh-CN.md) |
+| **[Verovo](https://github.com/roy-tong/verovo)** — verify costs | Reconcile supplier charges with tasks and outcomes → cost per **verified success** and evidence-backed ROI. [Website](https://roy-tong.github.io/Verovo/) · [中文](https://github.com/roy-tong/verovo/blob/main/README.zh-CN.md) |
+| **[Askovo](https://github.com/roy-tong/askovo)** — verify research | A business question in, a traceable decision out: bounded research on authorized sources, claims checked, conclusions that outrun their evidence fail the audit. |
+| **[Growovo](https://github.com/roy-tong/Growovo)** — verify operations | Recurring community and content work on your own accounts — reviewed, rate-limited, logged, no stored credentials. [Website](https://roy-tong.github.io/Growovo/) |
 
-Each project is independently useful through **CLI, Agent Skill and/or MCP**, and all three are open-source. Optional document/invoice parsers are adapters, not bundled forks. Extraction and platform receipts are not automatically proof of verified research, customer conversion, or booked financial value.
+Optional document/invoice parsers are adapters, not bundled forks; extraction and platform receipts are not automatically proof of verified research, customer conversion, or booked financial value.
 
-## Try them in one minute
+## Try it in one minute
 
 **Verovo — review charges and delivery** (synthetic local task, no accounts):
 
@@ -21,10 +27,7 @@ pipx install verovo
 verovo review --sample --html buyer-review.html
 ```
 
-The report keeps matching charges, an unmet delivery requirement and a missing
-observation separate. Rule applicability and source truth still require human
-review. [Inspect the synthetic report](https://roy-tong.github.io/Verovo/examples/buyer-review.html)
-· [Prepare your own task](https://github.com/roy-tong/verovo/blob/main/docs/buyer-review.md).
+The report keeps matching charges, an unmet delivery requirement and a missing observation separate; rule applicability still requires human review. [Inspect the synthetic report](https://roy-tong.github.io/Verovo/examples/buyer-review.html) · [Prepare your own task](https://github.com/roy-tong/verovo/blob/main/docs/buyer-review.md)
 
 **Askovo — run the product-reasoning chain** (built-in synthetic case):
 
@@ -37,10 +40,12 @@ askovo demo
 
 ## Evidence you can inspect
 
-- **Verovo**: local tests and synthetic reports verify engineering behavior, not customer demand. Buyer Ledger's 26 catalog entries are not live integrations; real customer-bill validation remains pending. Current release: CLI v0.13.0 on PyPI — `pipx install verovo` (2026-11-04). My [OpenLIT token-accounting fix](https://github.com/openlit/openlit/pull/1476) (merged upstream) stops reasoning tokens from being added to an output total that already includes them.
-- **Askovo**: `askovo demo` reports `status: pass`, `overclaims: 0` — that proves the reasoning chain, evidence citations and gates hold together, **not** that any demand, market size or launch is real. The chain now extends to business conclusions, and `askovo audit` exits 1 when a conclusion exceeds its evidence.
+Every line below says what is proven and what is not:
+
+- **Verovo**: local tests and synthetic reports verify engineering behavior, **not** customer demand. Buyer Ledger's 26 catalog entries are not live integrations; real customer-bill validation remains pending. Current release: CLI on [PyPI](https://pypi.org/project/verovo/) — v0.14.2, 2026-11-18 (badge above tracks the latest). My [OpenLIT token-accounting fix](https://github.com/openlit/openlit/pull/1476) (merged upstream) stops reasoning tokens from being added to an output total that already includes them.
+- **Askovo**: `askovo demo` reports `status: pass`, `overclaims: 0` — that proves the reasoning chain, evidence citations and gates hold together, **not** that any demand, market size or launch is real. `askovo audit` exits 1 when a conclusion exceeds its evidence.
 - **Growovo**: every command carries a verification level — PROVEN, PORTED or UNVERIFIED. The kernel refuses campaigns without human approval, only operates accounts its user owns, and stores no credentials.
-- The [external conformance vectors](https://github.com/roy-tong/verovo/tree/main/conformance/vectors/external) that shaped verovo's measurement checks are public, with defects, fixes and regression fixtures recorded.
+- The [external conformance vectors](https://github.com/roy-tong/verovo/tree/main/conformance/vectors/external) that shaped Verovo's measurement checks are public, with defects, fixes and regression fixtures recorded.
 
 ## The question behind the series
 
