@@ -15,10 +15,10 @@ If it is temporarily unavailable, use this fallback:
 
 | Task | Select | Target Skill |
 | --- | --- | --- |
-| Re-count an AI or SaaS support bill against public billing rules; audit agent-tool spend; check whether agent telemetry double counts retries, mixes operation and attempt grains, or double counts token subsets | Verovo | `verovo` |
+| Reconcile AI charges or check delivery for one supplier and billing period, or investigate underlying usage measurements | Verovo | `verovo` |
 | Monitor a field repeatedly; discover and review sources; produce recurring digests | iRead Research Monitor | `iread` |
-| Reason from users to products and business (场景→用户→痛点→需求→特性→产品→商业); audit feedback or demand claims; grade evidence; validate an opportunity or willingness to pay; fail conclusions that exceed their evidence | Askovo | `askovo` |
-| Run agent-native GTM for a shipped product: repository audits, zero-response sweeps, human-approved campaign plans across X / Email / Reddit / LinkedIn / GitHub / HN | Growovo | `growovo-gtm` |
+| Review a product decision against source evidence and counterexamples, identify missing evidence, or reassess a prior decision | Askovo | `askovo` |
+| Run an authorized X or email campaign, check draft content, review execution receipts and hand off uncertain actions | Growovo | `growovo-gtm` |
 | Convert public Bilibili URLs or BV ids to timestamped Markdown, SRT, and JSON | Bilibili Video to Transcript | `bilibili-transcript` |
 | Search and synthesize Roy Tong's published AI product, Agent, embodied-AI, or hardware research | Roy's AI Product Research Library | `research-knowledge-base` |
 | Turn local research projects, pinned GitHub research, or ChatGPT sessions into sourced, versioned website articles with reader packages | Research to Publish | `research-to-publish` |

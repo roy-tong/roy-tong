@@ -311,8 +311,8 @@
       ],
       "invoke_example": "Use Growovo to audit owner/repo health and zero-response issues, then draft a human-approved reply plan. Do not run write operations without --go.",
       "first_success": {
-        "action": "Clone the repository, pip install -r requirements.txt, then run python3 mkt.py github audit --repo roy-tong/verovo (read-only, PROVEN).",
-        "success": "The audit prints health findings without writing anything; every write command stays dry-run until --go."
+        "action": "From the Growovo repository, run python3 mkt.py demo. No account or network access is needed.",
+        "success": "The offline run produces execution records and a daily result card, including stopped actions. A real send requires an authorized account."
       },
       "constraints": [
         "Only accounts you own or operate; no third-party account automation.",
