@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/roy-tong/roy-tong/main/schemas/agent-tools.schema.json",
   "schema_version": "1.0",
-  "updated_at": "2026-11-14",
+  "updated_at": "2026-11-20",
   "catalog_url": "https://raw.githubusercontent.com/roy-tong/roy-tong/main/agent-tools.json",
   "purpose": "Route a user task to the smallest suitable Roy Tong tool (research, verification, or growth) without confusing discovery, installation, invocation, and successful output.",
   "router": {
@@ -15,7 +15,7 @@
       "id": "verovo",
       "name": "Verovo",
       "brand": "Verovo",
-      "summary": "Connect buyer logs, supplier charges, financial records and business outcomes. Review charges and delivery, allocate task costs and calculate cost per verified success and evidence-backed ROI. Automatic invoice extraction and insurance remain future work.",
+      "summary": "Compare the billing rules, invoice, usage and delivery records for one period. Review charge differences, delivery against buyer criteria and gaps in coverage. Supplier self-attestation leaves buyer acceptance unproven. The signed report preserves the evidence for that revision.",
       "match": [
         "AI delivery acceptance",
         "AI service renewal review",
@@ -78,13 +78,12 @@
       ],
       "invoke_example": "Use verovo to review this buyer task against the supplied charge and delivery criteria. Keep source and rule limitations visible; do not turn failed delivery into a refund claim.",
       "first_success": {
-        "action": "pipx install verovo (PyPI 0.13.0), then run verovo review --sample --html buyer-review.html.",
+        "action": "pipx install verovo, then run verovo review --sample --html buyer-review.html.",
         "success": "The synthetic local report keeps a matching charge, a failed buyer delivery criterion and a missing observation separate. It is not customer validation."
       },
       "constraints": [
         "Buyer Ledger is pre-M1: catalogued tools are not live-connected and no real platform bill has been validated yet.",
         "A finding is evidence for a review decision, not an accepted claim or a refund.",
-        "The review command is a main-branch preview after v0.9.0; tagged installs do not include it.",
         "A human must confirm applicable rules and source truth. No universal contract parsing or automated quality score.",
         "Providers reviewing upstream spend are buyers; downstream provider work requires a concrete transaction."
       ],
@@ -161,7 +160,7 @@
       "id": "askovo",
       "name": "Askovo",
       "brand": "Askovo",
-      "summary": "Turn business questions and authorized sources into traceable research deliverables. Agent-authored plans drive collection, descriptive analysis and evidence audits; unsupported sources and unverified claims stay visible.",
+      "summary": "Bring one product decision and the material behind it. Review the sources and counterexamples with the person who owns the decision. If the evidence falls short, Askovo lists what to collect. Reopen the same decision when new evidence arrives.",
       "match": [
         "user demand research",
         "customer discovery",
@@ -257,7 +256,7 @@
       "id": "growovo",
       "name": "Growovo",
       "brand": "Growovo",
-      "summary": "Run recurring community, content and communication tasks through reviewed queues and authorized accounts. The operator kernel and business playbooks share dry-run, approval, quotas and execution records; unknown outcomes require review.",
+      "summary": "Give Growovo the product facts, audience and actions you authorize. It checks drafts, queues approved work and records receipts. An uncertain email send stops the batch for review. Track replies, activation and sales from their own records.",
       "match": [
         "go-to-market",
         "growth operations",
