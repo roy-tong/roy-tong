@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/roy-tong/roy-tong/main/schemas/agent-tools.schema.json",
   "schema_version": "1.0",
-  "updated_at": "2026-11-20",
+  "updated_at": "2026-11-23",
   "catalog_url": "https://raw.githubusercontent.com/roy-tong/roy-tong/main/agent-tools.json",
   "purpose": "Route a user task to the smallest suitable Roy Tong tool (research, verification, or growth) without confusing discovery, installation, invocation, and successful output.",
   "router": {
@@ -15,7 +15,7 @@
       "id": "verovo",
       "name": "Verovo",
       "brand": "Verovo",
-      "summary": "Compare the billing rules, invoice, usage and delivery records for one period. Review charge differences, delivery against buyer criteria and gaps in coverage. Supplier self-attestation leaves buyer acceptance unproven. The signed report preserves the evidence for that revision.",
+      "summary": "Review one AI supplier for one billing period before acceptance or renewal. Verovo checks charges, delivery and evidence coverage separately, preserves the signed revision and supports replay without replacing the buyer's decision.",
       "match": [
         "AI delivery acceptance",
         "AI service renewal review",
@@ -160,7 +160,7 @@
       "id": "askovo",
       "name": "Askovo",
       "brand": "Askovo",
-      "summary": "Bring one product decision and the material behind it. Review the sources and counterexamples with the person who owns the decision. If the evidence falls short, Askovo lists what to collect. Reopen the same decision when new evidence arrives.",
+      "summary": "Bring one product decision and the material behind it. Askovo organizes supporting evidence, counterexamples and open gaps into a Decision Brief. The decision owner chooses whether to proceed, wait or stop; new evidence can reopen the decision without rewriting its history.",
       "match": [
         "user demand research",
         "customer discovery",
@@ -225,22 +225,19 @@
         "install_command": "gh skill install roy-tong/askovo askovo --agent codex --scope user"
       },
       "input": [
-        "research goal (product, user, or scene)",
-        "region (cn, overseas, or global) and optional market label",
-        "sample size target",
-        "platform types (forum, social, video, ecommerce, crowdfunding)",
-        "or an existing corpus to audit"
+        "a product decision with options, context and the cost of choosing wrong",
+        "existing interviews, public material, authorized exports or an existing corpus to audit",
+        "the decision owner, review date and current leaning",
+        "supporting evidence and counterexamples, or a request to identify missing evidence"
       ],
       "output": [
-        "platform feasibility and collection task list",
-        "quota-allocated source plan and platform route matrices",
+        "a Decision Brief with options, supporting evidence, counterexamples and open gaps",
+        "the cheapest next validation with an owner and stop condition",
         "evidence records with E0-E5 grades and provenance",
-        "deterministic corpus signals",
-        "demand judgments with counter-evidence and gaps",
-        "Chinese research-status report",
-        "audit exit code 1 with the overclaiming conclusions named"
+        "a decision replay showing how new evidence changes the review",
+        "an audit that names conclusions exceeding their evidence"
       ],
-      "invoke_example": "Use askovo to plan a study: goal 'AI 眼镜在海外社媒的用户不满与替代方案', region overseas, sample size 100000, platform types forum+social+video. Report feasibility and the next gate.",
+      "invoke_example": "Use askovo to review whether we should add a subscription service to our AI hardware. Use the supplied interviews and public material, compare proceed, wait or stop with supporting evidence and counterexamples, and return a Decision Brief with missing evidence and the cheapest next validation. Do not invent demand evidence.",
       "first_success": {
         "action": "pipx install askovo (PyPI), then run askovo demo.",
         "success": "The built-in synthetic case returns status: pass, supported: 1, overclaims: 0 — proving the chain and evidence citations run, not that the demand is real."
@@ -256,7 +253,7 @@
       "id": "growovo",
       "name": "Growovo",
       "brand": "Growovo",
-      "summary": "Give Growovo the product facts, audience and actions you authorize. It checks drafts, queues approved work and records receipts. An uncertain email send stops the batch for review. Track replies, activation and sales from their own records.",
+      "summary": "Run one authorized campaign batch without losing the receipts. Growovo checks drafts, binds approvals to the work, records execution and readback, and surfaces reply follow-ups. Sending, replies, activation and sales remain separate records.",
       "match": [
         "go-to-market",
         "growth operations",
@@ -307,17 +304,19 @@
       "output": [
         "repository audits, zero-response issue sweeps and reply drafts",
         "campaign executions with ledger entries and read-back verification screenshots",
-        "evidence-graded growth artifacts with PROVEN / PORTED / UNVERIFIED labels"
+        "evidence-graded growth artifacts with PROVEN / PORTED / UNVERIFIED / DISABLED labels"
       ],
       "invoke_example": "Use Growovo to audit owner/repo health and zero-response issues, then draft a human-approved reply plan. Do not run write operations without --go.",
       "first_success": {
-        "action": "From the Growovo repository, run python3 mkt.py demo. No account or network access is needed.",
-        "success": "The offline run produces execution records and a daily result card, including stopped actions. A real send requires an authorized account."
+        "action": "Run pipx install growovo, then mkt demo; or run python3 mkt.py demo from the repository. No account or network access is needed.",
+        "success": "The offline run produces execution records, a daily result card and data/demo/proof-bundle. Its proof_status=FAIL is expected from the intentional d-003 failure. A real send requires an authorized account."
       },
       "constraints": [
-        "Only accounts you own or operate; no third-party account automation.",
-        "All write operations default to dry-run and require a human-approved plan; the kernel refuses unapproved campaigns.",
-        "Commands carry verification levels: PROVEN, PORTED, UNVERIFIED — first runs of UNVERIFIED commands need human supervision."
+        "Only accounts you own or are explicitly authorized to operate; no third-party account automation.",
+        "Email is the only channel committed for unattended execution. X non-API browser writes are refused; use X only for read-only collection, dry runs, drafts and manual handoff. Automated writing requires a separately connected, compliant official API.",
+        "All write operations default to dry-run and require the applicable approval; unknown outcomes stop for human review and are never retried automatically.",
+        "Business readings stay owner_declared until hash-bound source, subject and metric definitions qualify them as observed; comparisons require a valid observation_pair_id.",
+        "Commands carry verification levels: PROVEN, PORTED, UNVERIFIED or DISABLED — DISABLED routes cannot be unlocked by operator approval, observed identity or quotas."
       ],
       "privacy": "Zero-credential CDP: no passwords, tokens or cookies are stored; SMTP credentials only via environment variables; ledger entries and screenshots stay local.",
       "skill": {

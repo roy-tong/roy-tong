@@ -1,55 +1,67 @@
 # Roy Tong
 
-<p align="center"><img src="assets/banner.svg" alt="Roy Tong — verification became the product" width="100%"></p>
+<p align="center"><strong>English</strong> · <a href="README.zh-CN.md">简体中文</a></p>
 
-**Building the ovo series — [Verovo](https://github.com/roy-tong/verovo), [Askovo](https://github.com/roy-tong/askovo), [Growovo](https://github.com/roy-tong/Growovo). AI made generation cheap; verification became the product.**
+<p align="center"><img src="assets/banner.svg" alt="Roy Tong — OVO, Prove Anything" width="100%"></p>
 
-[![Verovo on PyPI](https://img.shields.io/pypi/v/verovo?label=verovo)](https://pypi.org/project/verovo/)
+**OVO · Prove Anything. Agents do the work. We make the results count.**
+
+We believe agent work should lead to better decisions, completed execution and business results people can understand. OVO builds open-source products toward that future.
+
 [![Askovo on PyPI](https://img.shields.io/pypi/v/askovo?label=askovo)](https://pypi.org/project/askovo/)
-[![Verovo stars](https://img.shields.io/github/stars/roy-tong/Verovo?style=social)](https://github.com/roy-tong/verovo/stargazers)
+[![Growovo on PyPI](https://img.shields.io/pypi/v/growovo?label=growovo)](https://pypi.org/project/growovo/)
+[![Verovo on PyPI](https://img.shields.io/pypi/v/verovo?label=verovo)](https://pypi.org/project/verovo/)
 
-Three products, one business workflow: **Askovo researches and validates → Growovo executes recurring operations → Verovo reconciles costs with verified outcomes.** Each is independently useful as **CLI, Agent Skill and/or MCP**, keeps its own evidence and acceptance rules, and is open source.
+## Three products, one belief
 
-| Product | What you get |
-|---|---|
-| **[Verovo](https://github.com/roy-tong/Verovo)** | Compare the billing rules, invoice, usage and delivery records for one period. Review charge differences, delivery against buyer criteria and gaps in coverage. Supplier self-attestation leaves buyer acceptance unproven. The signed report preserves the evidence for that revision. [Website](https://roy-tong.github.io/Verovo/) |
-| **[Askovo](https://github.com/roy-tong/Askovo)** | Bring one product decision and the material behind it. Review the sources and counterexamples with the person who owns the decision. If the evidence falls short, Askovo lists what to collect. Reopen the same decision when new evidence arrives. [Website](https://roy-tong.github.io/Askovo/) |
-| **[Growovo](https://github.com/roy-tong/Growovo)** | Give Growovo the product facts, audience and actions you authorize. It checks drafts, queues approved work and records receipts. An uncertain email send stops the batch for review. Track replies, activation and sales from their own records. [Website](https://roy-tong.github.io/Growovo/) |
+| Product | Core value | What it makes possible |
+|---|---|---|
+| **[Askovo](https://github.com/roy-tong/askovo)** | **Great products grow from quantitative reasoning.** | Automatically collect and analyze user and market data, then build product definitions and decisions step by step. [Website](https://roy-tong.github.io/Askovo/) · [Decision replay](https://roy-tong.github.io/Askovo/en/examples/decision-replay.html) |
+| **[Growovo](https://github.com/roy-tong/Growovo)** | **You set the goal. Growovo carries out the work.** | Deliver the whole business workflow from product facts and content to channel execution, follow-up and result readback. [Website](https://roy-tong.github.io/Growovo/) · [Controlled run](https://roy-tong.github.io/Growovo/examples/controlled-run.en.html) |
+| **[Verovo](https://github.com/roy-tong/verovo)** | **Make every dollar spent on AI services make sense.** | Bring supplier rules, invoices, usage and delivery into one buyer review for charges, acceptance, renewal and task economics. [Website](https://roy-tong.github.io/Verovo/) · [Replay a period](https://roy-tong.github.io/Verovo/examples/replayable-period.html) |
 
-Optional document/invoice parsers are adapters, not bundled forks; extraction and platform receipts are not automatically proof of verified research, customer conversion, or booked financial value.
+Each product works independently and is open source. Together they explore a larger idea: as agents do more of the work, people need a better way to turn that work into trusted outcomes.
 
-## Try it in one minute
+**Execution boundary:** only Email is committed for unattended execution. X non-API browser writes are **DISABLED**; X remains read-only with dry runs, drafts and manual handoff until a compliant official API is connected.
 
-**Verovo — review charges and delivery** (synthetic local task, no accounts):
+The shift is concrete: **from research reports to product definitions, from campaigns sent to execution delivered, from invoice totals to buyer decisions.**
 
-```bash
-pipx install verovo
-verovo review --sample --html buyer-review.html
-```
+## Start with the work you want to change
 
-The report keeps matching charges, an unmet delivery requirement and a missing observation separate; rule applicability still requires human review. [Inspect the synthetic report](https://roy-tong.github.io/Verovo/examples/buyer-review.html) · [Prepare your own task](https://github.com/roy-tong/verovo/blob/main/docs/buyer-review.md)
-
-**Askovo — run the product-reasoning chain** (built-in synthetic case):
+**“I want product decisions grounded in quantitative research.”**
 
 ```bash
 pipx install askovo
 askovo demo
 ```
 
-**Growovo** runs on your own accounts through a local, zero-credential browser session, and every write path defaults to dry-run — so start from the [repository](https://github.com/roy-tong/Growovo) rather than a one-liner.
+Askovo turns automatic data collection and analysis into a reasoned product definition, helping teams understand why, for whom and what to build.
 
-## Evidence you can inspect
+**“I want a system that carries the work all the way through.”**
 
-Every line below says what is proven and what is not:
+```bash
+pipx install growovo
+mkt demo
+```
 
-- **Verovo**: local tests and synthetic reports verify engineering behavior, **not** customer demand. Buyer Ledger's 26 catalog entries are not live integrations; real customer-bill validation remains pending. Current release: CLI on [PyPI](https://pypi.org/project/verovo/) — see the live version badge above. My [OpenLIT token-accounting fix](https://github.com/openlit/openlit/pull/1476) (merged upstream) stops reasoning tokens from being added to an output total that already includes them.
-- **Askovo**: `askovo demo` reports `status: pass`, `overclaims: 0` — that proves the reasoning chain, evidence citations and gates hold together, **not** that any demand, market size or launch is real. `askovo audit` exits 1 when a conclusion exceeds its evidence.
-- **Growovo**: every command carries a verification level — PROVEN, PORTED or UNVERIFIED. The kernel refuses campaigns without human approval, only operates accounts its user owns, and stores no credentials.
-- The [external conformance vectors](https://github.com/roy-tong/verovo/tree/main/conformance/vectors/external) that shaped Verovo's measurement checks are public, with defects, fixes and regression fixtures recorded.
+Growovo delivers the execution chain from objective to content, channels, follow-up and readback. You set the direction; Growovo does the work. The demo also writes `data/demo/proof-bundle`; its `proof_status=FAIL` comes from an intentionally failed check.
 
-## The question behind the series
+**“I want to understand what our AI spend actually bought.”**
 
-When software's consumers become agents and producers become AI, what counts as one use, one completed task, one verified outcome? The ovo series makes those units inspectable — for buyers checking charges and delivery, product teams reasoning from users to business, and growth work that has to prove what it actually moved.
+```bash
+pipx install verovo
+verovo review --sample --html buyer-review.html
+```
+
+Verovo connects charges, delivery and task economics so your next acceptance or renewal starts with a clear record.
+
+## Why Prove Anything
+
+A finished response is only the beginning. The useful next step is a result people can inspect, replay and build on. OVO’s shared **Proof Bundle** work carries the task, execution, artifacts and checks behind a result across different products and environments.
+
+The goal is bigger than three tools: make independent review a normal part of agent work, just as version control became a normal part of software work.
+
+Current public examples are synthetic. They verify local execution and evidence handling, not customer adoption, market demand or business growth.
 
 [Read the essay](https://roy-tong.github.io/en/notes/when-the-software-consumer-becomes-an-agent/) · [中文：当软件的消费者变成 Agent](https://roy-tong.github.io/notes/when-the-software-consumer-becomes-an-agent/)
 
@@ -60,9 +72,9 @@ When software's consumers become agents and producers become AI, what counts as 
 | --- | --- |
 | [iRead Research Monitor](https://github.com/roy-tong/iRead) | Ongoing source discovery and evidence-aware research digests |
 | [Bilibili Video to Transcript](https://github.com/roy-tong/bilibili-transcript-pipeline) | Public videos to timestamped, searchable research text |
-| [Research to Publish](https://github.com/roy-tong/research-to-publish) | Sourced, versioned research articles with WeChat and Xiaohongshu delivery packages and publication receipts |
-| [agent-tool-center](https://github.com/roy-tong/agent-tool-center) | First-party skills and pipelines behind my research, content and ops lines |
-| [Roy's AI Product Research Library](https://github.com/roy-tong/roy-tong.github.io) | Public research, essays, and a read-only agent index |
+| [Research to Publish](https://github.com/roy-tong/research-to-publish) | Sourced, versioned research articles with publishing packages and receipts |
+| [agent-tool-center](https://github.com/roy-tong/agent-tool-center) | First-party skills and pipelines behind my research, content and operations work |
+| [Roy's AI Product Research Library](https://github.com/roy-tong/roy-tong.github.io) | Public research, essays and a read-only agent index |
 
 Machine-readable catalog: https://raw.githubusercontent.com/roy-tong/roy-tong/main/agent-tools.json
 
@@ -77,4 +89,4 @@ The router helps select a tool; it does not perform the selected tool's work.
 
 ---
 
-I also write about AI, products, embodied intelligence, and building companies. [Personal blog](https://roy-tong.github.io/) · [About](https://roy-tong.github.io/about/) · [X](https://x.com/elliwoodtong) · [Contact](https://roy-tong.github.io/support/)
+I write about AI, products, embodied intelligence and building companies. [Personal blog](https://roy-tong.github.io/) · [About](https://roy-tong.github.io/about/) · [X](https://x.com/elliwoodtong) · [Contact](https://roy-tong.github.io/support/)
