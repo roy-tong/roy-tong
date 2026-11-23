@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - README.md
+      - README.zh-CN.md
       - AGENTS.md
       - agent-tools.json
       - schemas/agent-tools.schema.json
@@ -13,6 +14,7 @@ on:
   pull_request:
     paths:
       - README.md
+      - README.zh-CN.md
       - AGENTS.md
       - agent-tools.json
       - schemas/agent-tools.schema.json

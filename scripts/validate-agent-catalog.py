@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CATALOG_PATH = ROOT / "agent-tools.json"
 SCHEMA_PATH = ROOT / "schemas" / "agent-tools.schema.json"
 README_PATH = ROOT / "README.md"
+README_ZH_PATH = ROOT / "README.zh-CN.md"
 ROUTER_PATH = ROOT / "skills" / "find-research-tool" / "SKILL.md"
 EXPECTED_IDS = {
     "verovo",
@@ -151,7 +152,41 @@ def main() -> int:
     if missing_ids:
         fail(f"catalog is missing expected tool ids: {', '.join(sorted(missing_ids))}")
 
-    canonical_text = "\n".join((readme, CATALOG_PATH.read_text(encoding="utf-8"), router_text))
+    by_id = {tool["id"]: tool for tool in tools}
+    askovo = by_id["askovo"]
+    askovo_inputs = " ".join(askovo["input"]).lower()
+    for required in ("product decision", "decision owner", "existing"):
+        if required not in askovo_inputs:
+            fail(f"Askovo input must route a decision task, missing: {required}")
+    if "sample size 100000" in askovo["invoke_example"]:
+        fail("Askovo invoke_example must not route a product decision to a collection quota")
+    for required in ("Decision Brief", "proceed, wait or stop"):
+        if required not in askovo["invoke_example"]:
+            fail(f"Askovo invoke_example must request a decision deliverable: {required}")
+
+    growovo = by_id["growovo"]
+    growovo_constraints = " ".join(growovo["constraints"])
+    if "user-visible supervised route" in growovo_constraints:
+        fail("Growovo must not route tasks to forbidden non-API X browser writes")
+    for required in ("Email is the only channel committed for unattended execution",
+                     "X non-API browser writes are refused", "official API", "DISABLED"):
+        if required not in growovo_constraints:
+            fail(f"Growovo constraints are missing current platform boundary: {required}")
+    if "proof-bundle" not in growovo["first_success"]["success"]:
+        fail("Growovo first_success must include the demo Proof Bundle")
+    if "authorized X or email campaign" in router_text:
+        fail("router fallback must not offer X campaign execution")
+
+    if not README_ZH_PATH.is_file():
+        fail("README.zh-CN.md is required for the bilingual Profile")
+    readme_zh = README_ZH_PATH.read_text(encoding="utf-8")
+    if "README.zh-CN.md" not in readme or "README.md" not in readme_zh:
+        fail("English and Chinese Profile READMEs must link to each other")
+    for expected in (catalog_url, "Askovo", "Growovo", "Verovo"):
+        if expected not in readme_zh:
+            fail(f"Chinese Profile README is missing: {expected}")
+
+    canonical_text = "\n".join((readme, readme_zh, CATALOG_PATH.read_text(encoding="utf-8"), router_text))
     obsolete = sorted(name for name in OBSOLETE_CANONICAL_NAMES if name in canonical_text)
     if obsolete:
         fail(f"obsolete canonical names remain in Agent-facing entry points: {', '.join(obsolete)}")

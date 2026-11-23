@@ -18,7 +18,7 @@ If it is temporarily unavailable, use this fallback:
 | Reconcile AI charges or check delivery for one supplier and billing period, or investigate underlying usage measurements | Verovo | `verovo` |
 | Monitor a field repeatedly; discover and review sources; produce recurring digests | iRead Research Monitor | `iread` |
 | Review a product decision against source evidence and counterexamples, identify missing evidence, or reassess a prior decision | Askovo | `askovo` |
-| Run an authorized X or email campaign, check draft content, review execution receipts and hand off uncertain actions | Growovo | `growovo-gtm` |
+| Run an authorized Email campaign or an X read-only/draft task, check content, review execution receipts and hand off uncertain actions | Growovo | `growovo-gtm` |
 | Convert public Bilibili URLs or BV ids to timestamped Markdown, SRT, and JSON | Bilibili Video to Transcript | `bilibili-transcript` |
 | Search and synthesize Roy Tong's published AI product, Agent, embodied-AI, or hardware research | Roy's AI Product Research Library | `research-knowledge-base` |
 | Turn local research projects, pinned GitHub research, or ChatGPT sessions into sourced, versioned website articles with reader packages | Research to Publish | `research-to-publish` |
