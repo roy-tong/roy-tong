@@ -168,10 +168,9 @@ def main() -> int:
     growovo_constraints = " ".join(growovo["constraints"])
     if "user-visible supervised route" in growovo_constraints:
         fail("Growovo must not route tasks to forbidden non-API X browser writes")
-    for required in ("Email is the only channel committed for unattended execution",
-                     "X non-API browser writes are refused", "official API", "DISABLED"):
+    for required in ("Writes default to live", "owner-attested", "platform permission", "Unknown outcomes stop for human review"):
         if required not in growovo_constraints:
-            fail(f"Growovo constraints are missing current platform boundary: {required}")
+            fail(f"Growovo constraints are missing current authorization or execution boundary: {required}")
     if "proof-bundle" not in growovo["first_success"]["success"]:
         fail("Growovo first_success must include the demo Proof Bundle")
     if "authorized X or email campaign" in router_text:

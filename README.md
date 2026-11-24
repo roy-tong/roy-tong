@@ -4,9 +4,9 @@
 
 <p align="center"><img src="assets/banner.svg" alt="Roy Tong — OVO, Prove Anything" width="100%"></p>
 
-**OVO · Prove Anything. Agents do the work. We make the results count.**
+**OVO · Prove Anything. Agents do the work. OVO makes the results stand up to scrutiny.**
 
-We believe agent work should lead to better decisions, completed execution and business results people can understand. OVO builds open-source products toward that future.
+OVO builds open-source products for real-evidence product research, authorized growth execution, and independent AI spend and value audits.
 
 [![Askovo on PyPI](https://img.shields.io/pypi/v/askovo?label=askovo)](https://pypi.org/project/askovo/)
 [![Growovo on PyPI](https://img.shields.io/pypi/v/growovo?label=growovo)](https://pypi.org/project/growovo/)
@@ -16,26 +16,26 @@ We believe agent work should lead to better decisions, completed execution and b
 
 | Product | Core value | What it makes possible |
 |---|---|---|
-| **[Askovo](https://github.com/roy-tong/askovo)** | **Great products grow from quantitative reasoning.** | Automatically collect and analyze user and market data, then build product definitions and decisions step by step. [Website](https://roy-tong.github.io/Askovo/) · [Decision replay](https://roy-tong.github.io/Askovo/en/examples/decision-replay.html) |
-| **[Growovo](https://github.com/roy-tong/Growovo)** | **You set the goal. Growovo carries out the work.** | Deliver the whole business workflow from product facts and content to channel execution, follow-up and result readback. [Website](https://roy-tong.github.io/Growovo/) · [Controlled run](https://roy-tong.github.io/Growovo/examples/controlled-run.en.html) |
-| **[Verovo](https://github.com/roy-tong/verovo)** | **Make every dollar spent on AI services make sense.** | Bring supplier rules, invoices, usage and delivery into one buyer review for charges, acceptance, renewal and task economics. [Website](https://roy-tong.github.io/Verovo/) · [Replay a period](https://roy-tong.github.io/Verovo/examples/replayable-period.html) |
+| **[Askovo](https://github.com/roy-tong/askovo)** | **Build product decisions on real evidence.** | Collect user and market evidence, test demand assumptions, and decide what to build next. [Website](https://roy-tong.github.io/Askovo/) · [Decision replay](https://roy-tong.github.io/Askovo/en/examples/decision-replay.html) |
+| **[Growovo](https://github.com/roy-tong/Growovo)** | **Set the goal and guardrails. Growovo keeps growth work moving.** | Execute authorized work, follow up replies, and keep receipts and business outcomes in one persistent runtime. [Website](https://roy-tong.github.io/Growovo/) · [Controlled run](https://roy-tong.github.io/Growovo/examples/controlled-run.en.html) |
+| **[Verovo](https://github.com/roy-tong/verovo)** | **Know what AI agents spent, whether the bill is right, and whether it was worth it.** | Track spend, audit charges independently, and compare costs with verified task outcomes. [Website](https://roy-tong.github.io/Verovo/) · [Replay a period](https://roy-tong.github.io/Verovo/examples/replayable-period.html) |
 
 Each product works independently and is open source. Together they explore a larger idea: as agents do more of the work, people need a better way to turn that work into trusted outcomes.
 
-**Execution boundary:** only Email is committed for unattended execution. X non-API browser writes are **DISABLED**; X remains read-only with dry runs, drafts and manual handoff until a compliant official API is connected.
+**Execution boundary:** automation follows explicit account authorization, action scope, quotas and risk review. New permissions, high-impact statements, money, contracts and irreversible commitments require the applicable approval.
 
-The shift is concrete: **from research reports to product definitions, from campaigns sent to execution delivered, from invoice totals to buyer decisions.**
+The shift is concrete: **from research answers to real evidence, from content queued to authorized work completed, from invoice totals to spend and value decisions.**
 
 ## Start with the work you want to change
 
-**“I want product decisions grounded in quantitative research.”**
+**“I want product decisions grounded in real evidence.”**
 
 ```bash
 pipx install askovo
 askovo demo
 ```
 
-Askovo turns automatic data collection and analysis into a reasoned product definition, helping teams understand why, for whom and what to build.
+Askovo collects and organizes real user and market evidence, keeps counterexamples attached to the decision, and helps the team test what it still needs to know.
 
 **“I want a system that carries the work all the way through.”**
 
@@ -44,7 +44,7 @@ pipx install growovo
 mkt demo
 ```
 
-Growovo delivers the execution chain from objective to content, channels, follow-up and readback. You set the direction; Growovo does the work. The demo also writes `data/demo/proof-bundle`; its `proof_status=FAIL` comes from an intentionally failed check.
+Growovo keeps goals, authorization, actions, replies and receipts in one persistent runtime. Routine work runs within its approved scope; new permissions and irreversible commitments escalate.
 
 **“I want to understand what our AI spend actually bought.”**
 
