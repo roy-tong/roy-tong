@@ -4,9 +4,9 @@
 
 <p align="center"><img src="assets/banner.svg" alt="Roy Tong — OVO, Prove Anything" width="100%"></p>
 
-**OVO · Prove Anything。Agent 执行任务，我们让结果经得起复核。**
+**OVO · Prove Anything。Agent 做事，OVO 让结果经得起追问。**
 
-我们希望 Agent 的工作能带来更好的决定、真正完成的执行，以及人们看得懂的业务结果。OVO 正围绕这个目标构建开源产品。
+OVO 构建三个开源产品：用真实证据支持产品研究，在明确授权内执行增长工作，独立核验 AI 支出与价值。
 
 [![Askovo on PyPI](https://img.shields.io/pypi/v/askovo?label=askovo)](https://pypi.org/project/askovo/)
 [![Growovo on PyPI](https://img.shields.io/pypi/v/growovo?label=growovo)](https://pypi.org/project/growovo/)
@@ -16,26 +16,26 @@
 
 | 产品 | 核心价值 | 能帮你完成什么 |
 |---|---|---|
-| **[Askovo](https://github.com/roy-tong/askovo)** | **好产品从定量推理中长出来。** | 自动收集并分析用户与市场数据，逐步形成产品定义和决定。[官网](https://roy-tong.github.io/Askovo/) · [决策重放](https://roy-tong.github.io/Askovo/en/examples/decision-replay.html) |
-| **[Growovo](https://github.com/roy-tong/Growovo)** | **你定目标，Growovo 执行到底。** | 从产品事实和内容，到渠道执行、跟进与结果回读，交付完整执行链并保留回执。[官网](https://roy-tong.github.io/Growovo/) · [受控执行](https://roy-tong.github.io/Growovo/examples/controlled-run.html) |
-| **[Verovo](https://github.com/roy-tong/verovo)** | **让花在 AI 服务上的每一笔钱都说得明白。** | 把供应商规则、账单、用量和交付放进同一次买方复核，支持费用核验、验收、续约与任务经济性分析。[官网](https://roy-tong.github.io/Verovo/) · [重放账期](https://roy-tong.github.io/Verovo/examples/replayable-period.html) |
+| **[Askovo](https://github.com/roy-tong/askovo)** | **好产品，先从真实证据开始。** | 汇集用户与市场证据、检验需求假设，再决定做什么、不做什么。[官网](https://roy-tong.github.io/Askovo/) · [决策重放](https://roy-tong.github.io/Askovo/examples/decision-replay.html) |
+| **[Growovo](https://github.com/roy-tong/Growovo)** | **你定目标和边界，Growovo 持续完成增长运营。** | 执行授权动作、跟进回复，把回执和业务结果留在同一持久运行时。[官网](https://roy-tong.github.io/Growovo/) · [受控执行](https://roy-tong.github.io/Growovo/examples/controlled-run.html) |
+| **[Verovo](https://github.com/roy-tong/verovo)** | **知道 Agent 花了多少、账单对不对、花得值不值。** | 跟踪支出、独立核验账单，并把成本连接到已验收任务结果。[官网](https://roy-tong.github.io/Verovo/) · [重放账期](https://roy-tong.github.io/Verovo/examples/replayable-period.html) |
 
 每个产品都能独立使用，也都是开源项目。它们共同探索一个问题：当 Agent 承担越来越多工作，人如何把这些工作转化为可信结果。
 
-**执行边界：**目前只有 Email 承诺无人值守执行。X 非 API 网页写入为 **DISABLED**；在接入合规官方 API 前，X 只保留只读、dry-run、草稿和人工交接。
+**执行边界：**自动化服从明确的账号授权、动作范围、配额和风险审核。新权限、高影响力声明、金钱、合同和不可逆承诺需要相应审批。
 
-这条变化很具体：**从研究报告走向产品定义，从发出内容走向完成执行，从账单总额走向买方决定。**
+这条变化很具体：**从研究答案走向真实证据，从内容排队走向授权内完成工作，从账单总额走向支出与价值决定。**
 
 ## 从你想改变的工作开始
 
-**“我想让产品决定有定量研究依据。”**
+**“我想让产品决定建立在真实证据上。”**
 
 ```bash
 pipx install askovo
 askovo demo
 ```
 
-Askovo 把自动数据采集和分析转化为可复核的产品定义，帮助团队理解为什么做、为谁做、做什么。
+Askovo 采集并组织真实用户与市场证据，让反例跟着决定走，帮助团队检验仍不知道的事。
 
 **“我想要一个能把工作执行到底的系统。”**
 
@@ -44,7 +44,7 @@ pipx install growovo
 mkt demo
 ```
 
-Growovo 交付从目标到内容、渠道、跟进和回读的执行链。你定方向，Growovo 执行。Demo 还会生成 `data/demo/proof-bundle`；其中的 `proof_status=FAIL` 来自一条有意失败的检查。
+Growovo 把目标、授权、动作、回复和回执放进同一持久运行时。常规工作在批准范围内执行，新权限和不可逆承诺会升级审核。
 
 **“我想知道 AI 支出究竟买到了什么。”**
 

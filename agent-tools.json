@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/roy-tong/roy-tong/main/schemas/agent-tools.schema.json",
   "schema_version": "1.0",
-  "updated_at": "2026-11-23",
+  "updated_at": "2026-11-24",
   "catalog_url": "https://raw.githubusercontent.com/roy-tong/roy-tong/main/agent-tools.json",
   "purpose": "Route a user task to the smallest suitable Roy Tong tool (research, verification, or growth) without confusing discovery, installation, invocation, and successful output.",
   "router": {
@@ -15,7 +15,7 @@
       "id": "verovo",
       "name": "Verovo",
       "brand": "Verovo",
-      "summary": "Review one AI supplier for one billing period before acceptance or renewal. Verovo checks charges, delivery and evidence coverage separately, preserves the signed revision and supports replay without replacing the buyer's decision.",
+      "summary": "Track what AI agents spend, audit whether supplier charges are correct, and compare task costs with verified outcomes. Verovo prepares line-level buyer actions for payment review, evidence, remediation, renewal and procurement while keeping financial, control, delivery and value conclusions separate.",
       "match": [
         "AI delivery acceptance",
         "AI service renewal review",
@@ -160,7 +160,7 @@
       "id": "askovo",
       "name": "Askovo",
       "brand": "Askovo",
-      "summary": "Bring one product decision and the material behind it. Askovo organizes supporting evidence, counterexamples and open gaps into a Decision Brief. The decision owner chooses whether to proceed, wait or stop; new evidence can reopen the decision without rewriting its history.",
+      "summary": "Collect real user and market evidence for one product decision. Askovo supports research execution, source and counterevidence links, demand-validation records and decision replay. Concept feedback, willingness-to-pay statements and observed behavior remain distinct; the decision owner chooses whether to proceed, wait or stop.",
       "match": [
         "user demand research",
         "customer discovery",
@@ -253,7 +253,7 @@
       "id": "growovo",
       "name": "Growovo",
       "brand": "Growovo",
-      "summary": "Run one authorized campaign batch without losing the receipts. Growovo checks drafts, binds approvals to the work, records execution and readback, and surfaces reply follow-ups. Sending, replies, activation and sales remain separate records.",
+      "summary": "Set a growth goal and explicit guardrails. Growovo keeps goals, opportunities, content, authorized actions, conversations and receipts in one persistent runtime. Routine work can run within its approved scope; new permissions, high-impact statements and irreversible commitments escalate. Sending, replies, activation and sales remain separate records.",
       "match": [
         "go-to-market",
         "growth operations",
@@ -313,10 +313,11 @@
       },
       "constraints": [
         "Only accounts you own or are explicitly authorized to operate; no third-party account automation.",
-        "Email is the only channel committed for unattended execution. X non-API browser writes are refused; use X only for read-only collection, dry runs, drafts and manual handoff. Automated writing requires a separately connected, compliant official API.",
-        "All write operations default to dry-run and require the applicable approval; unknown outcomes stop for human review and are never retried automatically.",
+        "Writes default to live after the applicable authorization; explicit --dry-run previews. Official API/SMTP is preferred, and managed WebBridge/CDP writes require a named owner-attested window without claiming platform permission.",
+        "Routine replies stay within account, channel, audience and quota scope. New accounts, permissions or channels require first-use authorization; high-impact statements and money, contracts or irreversible commitments require separate review.",
+        "Unknown outcomes stop for human review and are never retried automatically. Unauthorized accounts, CAPTCHA/challenge bypass and risk-control evasion remain forbidden.",
         "Business readings stay owner_declared until hash-bound source, subject and metric definitions qualify them as observed; comparisons require a valid observation_pair_id.",
-        "Commands carry verification levels: PROVEN, PORTED, UNVERIFIED or DISABLED — DISABLED routes cannot be unlocked by operator approval, observed identity or quotas."
+        "Commands carry verification levels: PROVEN, PORTED, UNVERIFIED or DISABLED. Technical channel readiness never proves business growth."
       ],
       "privacy": "Zero-credential CDP: no passwords, tokens or cookies are stored; SMTP credentials only via environment variables; ledger entries and screenshots stay local.",
       "skill": {
