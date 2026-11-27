@@ -8,6 +8,8 @@
 
 OVO 构建三个开源产品：用真实证据支持产品研究，在明确授权内执行增长工作，独立核验 AI 支出与价值。
 
+**关注进展：** [X @elliwoodtong](https://x.com/elliwoodtong) · [加入 OVO Discord](https://discord.gg/UqrM8MCXb)
+
 [![Askovo on PyPI](https://img.shields.io/pypi/v/askovo?label=askovo)](https://pypi.org/project/askovo/)
 [![Growovo on PyPI](https://img.shields.io/pypi/v/growovo?label=growovo)](https://pypi.org/project/growovo/)
 [![Verovo on PyPI](https://img.shields.io/pypi/v/verovo?label=verovo)](https://pypi.org/project/verovo/)

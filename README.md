@@ -8,6 +8,8 @@
 
 OVO builds open-source products for real-evidence product research, authorized growth execution, and independent AI spend and value audits.
 
+**Follow the build:** [X @elliwoodtong](https://x.com/elliwoodtong) · [Join the OVO Discord](https://discord.gg/UqrM8MCXb)
+
 [![Askovo on PyPI](https://img.shields.io/pypi/v/askovo?label=askovo)](https://pypi.org/project/askovo/)
 [![Growovo on PyPI](https://img.shields.io/pypi/v/growovo?label=growovo)](https://pypi.org/project/growovo/)
 [![Verovo on PyPI](https://img.shields.io/pypi/v/verovo?label=verovo)](https://pypi.org/project/verovo/)
